@@ -6,11 +6,13 @@ project:
     - component: EdgeImpulse::EdgeImpulse:SDK
     - component: ARM::CMSIS:DSP&Source@1.11.0
     - component: ARM::CMSIS:NN Lib
+    # add you model here
 
   groups:
     - group: Application
       files:
         - file: ./src/main.cpp
+        - file: ./src/ei_classifier_porting.cpp
 
   layers:
     - layer: $Target-Layer$
