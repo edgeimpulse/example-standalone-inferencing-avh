@@ -1,0 +1,48 @@
+solution:
+
+  created-for: CMSIS-Toolbox@2.3.0
+
+  description: Example standalone inferencing project for CMSIS Toolbox
+  cdefault:
+  misc:
+      - for-compiler: GCC
+        C-CPP:
+          - -ffunction-sections
+          - -fdata-sections
+        Link:
+          - -Wl,--gc-sections
+      - for-compiler: CLANG
+        C-CPP:
+          - -ffunction-sections
+          - -fdata-sections
+        Link:
+          - -Wl,--gc-sections
+      - for-compiler: AC6
+        C-CPP:
+          - -ffunction-sections
+          - -fdata-sections
+        Link:
+          - -Wl,--gc-sections
+
+# List the packs that define the device and/or board
+  packs:
+    - pack: ARM::CMSIS@6.0.0
+
+# List different hardware targets that are used to deploy the solution
+  target-types:
+    - type: AVH                               # runs on Arm Virtual Hardware
+      device: ARM::SSE-300-MPS3
+      
+# List different build types
+  build-types:
+    - type: Debug
+      debug: on
+      optimize: none
+
+    - type: Release
+      debug: off
+      optimize: balanced
+
+# List related projects
+  projects:
+    - project: inferencing.cproject.yml

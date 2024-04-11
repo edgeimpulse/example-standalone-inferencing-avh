@@ -1,0 +1,16 @@
+project:
+# A project translates into one executable or library
+
+# List the packs that define the device and/or board
+  packs:
+    - pack: ARM::CMSIS         # The CMSIS base software pack
+    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.5.0   # optional packs can specify a version
+
+  groups:
+    - group: Application
+      files: 
+        - file: ./src/main.cpp
+
+# A software component is a re-usable unit that may be configurable
+  components:                  # List components to use for your application
+    - component: CMSIS:CORE    # The CMSIS-Core component used in most projects
