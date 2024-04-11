@@ -7,3 +7,7 @@ Example standalone inferecing for AVH
 ## Build the firmware
 
 ## Run on AVH
+
+## Note
+Tested using GCC 10.3.1 and GCC 12.3.1.
+Doesn't work with GCC 12.2.1.
