@@ -4,13 +4,21 @@ solution:
 
   description: Example standalone inferencing project for CMSIS Toolbox
   cdefault:
+  misc:
+    - for-compiler: GCC
+      C-CPP:
+        - -flax-vector-conversions
+        
   language-C: c99
   language-CPP: c++11
 
 # List the packs that define the device and/or board
   packs:
     - pack: ARM::CMSIS@6.0.0
+    - pack: ARM::CMSIS-DSP@1.11.0
+    - pack: ARM::CMSIS-NN@4.0.0
     - pack: ARM::Cortex_DFP@1.0.0
+    - pack: EdgeImpulse::EI-SDK@1.49.0
 
 # List different hardware targets that are used to deploy the solution
   target-types:
@@ -81,7 +89,7 @@ solution:
   build-types:
     - type: Debug
       debug: on
-      optimize: none
+      optimize: speed
 
     - type: Release
       debug: off

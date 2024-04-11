@@ -3,15 +3,18 @@ project:
   # List of software components used.
   components:
     - component: CMSIS:CORE
+    - component: EdgeImpulse::EdgeImpulse:SDK
+    - component: ARM::CMSIS:DSP&Source@1.11.0
+    - component: ARM::CMSIS:NN Lib
 
   groups:
     - group: Application
-      files: 
+      files:
         - file: ./src/main.cpp
 
   layers:
     - layer: $Target-Layer$
 
   output:
-    base-name: $TargetType$_$Project$   # used the base name of the `cproject.yml` file.
-    type: elf              # Generate executeable file.
+    base-name: $TargetType$_$Project$ # used the base name of the `cproject.yml` file.
+    type: elf # Generate executeable file.
