@@ -19,18 +19,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstdarg>
+#include <cstring>
+#include <math.h>
+#include "systick_handler.h"
+#include "RTE_Components.h"
+#include CMSIS_device_header
 
 __attribute__((weak)) EI_IMPULSE_ERROR ei_run_impulse_check_canceled() {
     return EI_IMPULSE_OK;
 }
 
 __attribute__((weak)) EI_IMPULSE_ERROR ei_sleep(int32_t time_ms) {
+    uint32_t start_time = systick_handler_get();
+    uint32_t now = 0;
+
+    do {        
+        __NOP();
+        now = systick_handler_get();
+    }while ((now - start_time) < time_ms);
     
     return EI_IMPULSE_OK;
 }
 
 uint64_t ei_read_timer_ms() {
-    return 0;
+    return systick_handler_get();
 }
 
 uint64_t ei_read_timer_us() {
@@ -51,7 +63,48 @@ __attribute__((weak)) void ei_printf(const char *format, ...) {
 }
 
 __attribute__((weak)) void ei_printf_float(float f) {
-    ei_printf("%s", f);
+    float n = f;
+
+    static double PRECISION = 0.00001;
+    static int MAX_NUMBER_STRING_SIZE = 32;
+
+    char s[MAX_NUMBER_STRING_SIZE];
+
+    if (n == 0.0) {
+        strcpy(s, "0");
+    }
+    else {
+        int digit, m;
+        char *c = s;
+        int neg = (n < 0);
+        if (neg) {
+            n = -n;
+        }
+        // calculate magnitude
+        m = log10(n);
+        if (neg) {
+            *(c++) = '-';
+        }
+        if (m < 1.0) {
+            m = 0;
+        }
+        // convert the number
+        while (n > PRECISION || m >= 0) {
+            double weight = pow(10.0, m);
+            if (weight > 0 && !isinf(weight)) {
+                digit = floor(n / weight);
+                n -= (digit * weight);
+                *(c++) = '0' + digit;
+            }
+            if (m == 0 && n > 0) {
+                *(c++) = '.';
+            }
+            m--;
+        }
+        *(c) = '\0';
+    }
+
+    ei_printf("%s", s);
 }
 
 __attribute__((weak)) void *ei_malloc(size_t size) {

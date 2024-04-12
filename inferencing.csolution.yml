@@ -18,9 +18,10 @@ solution:
     - pack: ARM::CMSIS-DSP@1.11.0
     - pack: ARM::CMSIS-NN@4.0.0
     - pack: ARM::Cortex_DFP@1.0.0
-    - pack: EdgeImpulse::EI-SDK@1.49.0
+    - pack: EdgeImpulse::EI-SDK@1.49.4
     # add you model here
     # - pack: EdgeImpulse::project_name@version
+    #- pack: EdgeImpulse::Tutorial_Continuous_motion_recog@155.0.0
 
 # List different hardware targets that are used to deploy the solution
   target-types:
