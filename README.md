@@ -10,13 +10,13 @@ Then you ned to add it to the solution and the project.
 
 ### Solution
 In [inferencing.csolution.yml](inferencing.csolution.yml), substitute
-# - pack: EdgeImpulse::project_name@version
+\# - pack: EdgeImpulse::project_name@version
 with
 - pack: EdgeImpulse::project_name@version
 
 ### Project
 In [inferencing.cproject.yml](inferencing.cproject.yml), substitute
-# - component: EdgeImpulse::EdgeImpulse:model:project_name
+\# - component: EdgeImpulse::EdgeImpulse:model:project_name
 with
 - component: EdgeImpulse::EdgeImpulse:model:project_name
 
