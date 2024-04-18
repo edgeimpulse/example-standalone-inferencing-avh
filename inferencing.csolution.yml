@@ -46,7 +46,7 @@ solution:
     - type: CM4_FP
       device: ARMCM4
       variables:
-        - Target-Layer: Target/CM4/Target.clayer.yml
+        - Target-Layer: Target/CM4_FP/Target.clayer.yml
     - type: CM7
       device: ARMCM7
       variables:
