@@ -6,11 +6,32 @@ solution:
   cdefault:
   misc:
     - for-compiler: GCC
-      C-CPP:
+      C:
+        - -std=c99
         - -flax-vector-conversions
-        
-  language-C: c99
-  language-CPP: c++11
+        - -mthumb
+        - -fdata-sections
+      CPP:
+        - -std=c++11
+        - -Og
+        - -fdata-sections
+        - -mthumb
+        - -fno-rtti
+        - -fno-unwind-tables
+    - Link:
+        #- --specs=nosys.specs
+        - --specs=nano.specs
+        - --specs=rdimon.specs
+        - --entry=Reset_Handler
+        - -Wl,-Map=.map,--cref,-print-memory-usage,--gc-sections
+    - for-compiler: CLANG
+      C-CPP:
+        - -ffunction-sections
+        - -fdata-sections
+      Link:
+        - -Wl,--gc-sections
+  # language-C: c99 # same effect ?
+  # language-CPP: c++11
 
 # List the packs that define the device and/or board
   packs:
