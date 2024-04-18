@@ -33,7 +33,24 @@ To specify a configuration and target (ie Debug for CM55):
 ```sh
 cbuild inferencing.csolution.yml --context inferencing.Debug+CM55
 ```
-Check the [CMSIS-Toolbox User Guide](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/README.md) for a complete overview on build command.
+
+Other useful arguments are:
+```
+--update-rte
+```
+Update the RTE directory and files
+
+```
+--packs
+```
+Download missing software packs with cpackget
+
+```
+--clean
+```
+Remove intermediate and output directories
+
+Check the [CMSIS-Toolbox User Guide](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/README.md) for a complete overview of the cbuild command.
 
 ### Using CMSIS toolbox extension
 In the CMSIS view, click on the hammer icon.
@@ -55,4 +72,4 @@ FVP_Corstone_SSE-300_Ethos-U55 -f ./Target/CM55_Ethos/fvp_config.txt ./out/infer
 
 ## Note
 Tested using GCC 10.3.1 and GCC 12.3.1.
-Doesn't work with GCC 12.2.1.
+Doesn't work with GCC 12.2.1 for MCU with Helium (Cortex-M55, Cortex-M85).
