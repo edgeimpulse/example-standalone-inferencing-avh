@@ -18,7 +18,7 @@ solution:
         - -mthumb
         - -fno-rtti
         - -fno-unwind-tables
-    - Link:
+      Link:
         #- --specs=nosys.specs
         - --specs=nano.specs
         - --specs=rdimon.specs
@@ -30,12 +30,19 @@ solution:
         - -fdata-sections
       Link:
         - -Wl,--gc-sections
+    - for-compiler: AC6
+      C:
+        - -std=c99
+      CPP:
+        - -std=c++11
+        - -fno-rtti
+
   # language-C: c99 # same effect ?
   # language-CPP: c++11
 
 # List the packs that define the device and/or board
   packs:
-    - pack: ARM::CMSIS@6.0.0
+    - pack: ARM::CMSIS@5.9.0
     - pack: ARM::CMSIS-DSP@1.11.0
     - pack: ARM::CMSIS-NN@4.0.0
     - pack: ARM::Cortex_DFP@1.0.0
