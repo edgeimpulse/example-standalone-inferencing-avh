@@ -7,7 +7,8 @@ layer:
 
   linker:
     - regions: ./RTE/Device/ARMCM0P/regions_ARMCM0P.h
-
+    - script: ./RTE/Device/ARMCM0P/clang_linker_script.ld.src
+      for-compiler: CLANG
   groups:
     - group: FVP
       files:
