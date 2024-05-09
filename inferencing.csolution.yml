@@ -25,11 +25,21 @@ solution:
         - --entry=Reset_Handler
         - -Wl,-Map=.map,--cref,-print-memory-usage,--gc-sections
     - for-compiler: CLANG
-      C-CPP:
-        - -ffunction-sections
+      C:
+        - -std=c99
+        - -flax-vector-conversions
+        - -mthumb
         - -fdata-sections
+      CPP:
+        - -std=c++11
+        - -Og
+        - -fdata-sections
+        - -mthumb
+        - -fno-rtti
+        - -fno-unwind-tables
+        - -fno-exceptions
       Link:
-        - -Wl,--gc-sections
+        - -Wl, -lcrt0
     - for-compiler: AC6
       C:
         - -std=c99
@@ -42,8 +52,8 @@ solution:
 
 # List the packs that define the device and/or board
   packs:
-    - pack: ARM::CMSIS@5.9.0
-    - pack: ARM::CMSIS-DSP@1.11.0
+    - pack: ARM::CMSIS@6.0.0
+    - pack: ARM::CMSIS-DSP@1.15.0
     - pack: ARM::CMSIS-NN@4.0.0
     - pack: ARM::Cortex_DFP@1.0.0
     - pack: EdgeImpulse::EI-SDK@1.49.4

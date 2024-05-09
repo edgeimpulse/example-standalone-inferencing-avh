@@ -43,66 +43,63 @@ int main(void)
         return 1;
     }
         
-    while(1) {
-        // the features are stored into flash, and we don't want to load everything into RAM
-        signal_t features_signal;
-        features_signal.total_length = sizeof(features) / sizeof(features[0]);
-        features_signal.get_data = &raw_feature_get_data;
+    // the features are stored into flash, and we don't want to load everything into RAM
+    signal_t features_signal;
+    features_signal.total_length = sizeof(features) / sizeof(features[0]);
+    features_signal.get_data = &raw_feature_get_data;
 
-        // invoke the impulse
-        EI_IMPULSE_ERROR res = run_classifier(&features_signal, &result, false);
+    // invoke the impulse
+    EI_IMPULSE_ERROR res = run_classifier(&features_signal, &result, false);
 
-        //ei_printf("run_classifier returned: %d\n", res);
+    //ei_printf("run_classifier returned: %d\n", res);
 
-        if (res != 0) {
-            return 1;
-        }
-            
-        ei_printf("Predictions (DSP: %ld ms., Classification: %ld ms., Anomaly: %ld ms.): \n",
-                    (int32_t)result.timing.dsp, (int32_t)result.timing.classification, (int32_t)result.timing.anomaly);
+    if (res != 0) {
+        return 1;
+    }
+        
+    ei_printf("Predictions (DSP: %ld ms., Classification: %ld ms., Anomaly: %ld ms.): \n",
+                (int32_t)result.timing.dsp, (int32_t)result.timing.classification, (int32_t)result.timing.anomaly);
 
-        // print the predictions
-        ei_printf("[");
+    // print the predictions
+    ei_printf("[");
 
 #if EI_CLASSIFIER_OBJECT_DETECTION == 1
-        bool bb_found = result.bounding_boxes[0].value > 0;
-        for (size_t ix = 0; ix < EI_CLASSIFIER_OBJECT_DETECTION_COUNT; ix++) {
-            auto bb = result.bounding_boxes[ix];
-            if (bb.value == 0) {
-                continue;
-            }
-
-            ei_printf("    %s (", bb.label);
-            ei_printf_float(bb.value);
-            ei_printf(") [ x: %lu, y: %lu, width: %lu, height: %lu ]\n", bb.x, bb.y, bb.width, bb.height);
+    bool bb_found = result.bounding_boxes[0].value > 0;
+    for (size_t ix = 0; ix < EI_CLASSIFIER_OBJECT_DETECTION_COUNT; ix++) {
+        auto bb = result.bounding_boxes[ix];
+        if (bb.value == 0) {
+            continue;
         }
 
-        if (!bb_found) {
-            ei_printf("    No objects found\n");
-        }
-#else
-        for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-            ei_printf("    %s: ",result.classification[ix].label);
-            ei_printf_float(result.classification[ix].value);
-
-#if EI_CLASSIFIER_HAS_ANOMALY == 1
-            ei_printf(",\n");            
-#else
-            if (ix != EI_CLASSIFIER_LABEL_COUNT - 1) {
-                ei_printf(",\n");                
-            }
-#endif
-        }
-#endif
-
-#if EI_CLASSIFIER_HAS_ANOMALY == 1
-        ei_printf("Anomaly: ");
-        ei_printf_float(result.anomaly);
-#endif
-        ei_printf("]\n");
-
-        ei_sleep(2000);
+        ei_printf("    %s (", bb.label);
+        ei_printf_float(bb.value);
+        ei_printf(") [ x: %lu, y: %lu, width: %lu, height: %lu ]\n", bb.x, bb.y, bb.width, bb.height);
     }
+
+    if (!bb_found) {
+        ei_printf("    No objects found\n");
+    }
+#else
+    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+        ei_printf("    %s: ",result.classification[ix].label);
+        ei_printf_float(result.classification[ix].value);
+
+#if EI_CLASSIFIER_HAS_ANOMALY == 1
+        ei_printf(",\n");            
+#else
+        if (ix != EI_CLASSIFIER_LABEL_COUNT - 1) {
+            ei_printf(",\n");                
+        }
+#endif
+    }
+#endif
+
+#if EI_CLASSIFIER_HAS_ANOMALY == 1
+    ei_printf("Anomaly: ");
+    ei_printf_float(result.anomaly);
+#endif
+    ei_printf("]\n");
+
 
     return  0;
 }
