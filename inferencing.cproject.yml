@@ -1,23 +1,122 @@
 project:
 
-  # List of software components used.
-  components:
-    - component: CMSIS:CORE
-    - component: EdgeImpulse::EdgeImpulse:SDK
-    - component: ARM::CMSIS:DSP
-    - component: ARM::CMSIS:NN Lib
-    # add you model here
-    # - component: EdgeImpulse::EdgeImpulse:model:Tutorial_Continuous_motion_recog
-
-  groups:
-    - group: Application
-      files:
-        - file: ./src/main.cpp
-        - file: ./src/ei_classifier_porting.cpp
-        - file: ./src/systick_handler.cpp
-
   layers:
-    - layer: $Target-Layer$
+    - layer: ./App/App.clayer.yml
+
+   #Target: CM0
+    - layer: ./Target/CM0/Target.clayer.yml
+      for-context:
+        - +CM0
+
+    #Target: CM0plus
+    - layer: ./Target/CM0plus/Target.clayer.yml
+      for-context:
+        - +CM0plus
+
+    #Target: CM3
+    - layer: ./Target/CM3/Target.clayer.yml
+      for-context:
+        - +CM3
+
+    #Target: CM4
+    - layer: ./Target/CM4/Target.clayer.yml
+      for-context:
+        - +CM4
+
+    #Target: CM7
+    - layer: ./Target/CM7/Target.clayer.yml
+      for-context:
+        - +CM7
+
+    #Target: CM23
+    - layer: ./Target/CM23/Target.clayer.yml
+      for-context:
+        - +CM23
+
+    #Target: CM23S
+    - layer: ./Target/CM23S/Target.clayer.yml
+      for-context:
+        - +CM23S
+
+    #Target: CM23NS
+    - layer: ./Target/CM23NS/Target.clayer.yml
+      for-context:
+        - +CM23NS
+
+    #Target: CM33
+    - layer: ./Target/CM33/Target.clayer.yml
+      for-context:
+        - +CM33
+
+    #Target: CM33S
+    - layer: ./Target/CM33S/Target.clayer.yml
+      for-context:
+        - +CM33S
+
+    #Target: CM33NS
+    - layer: ./Target/CM33NS/Target.clayer.yml
+      for-context:
+        - +CM33NS
+
+    #Target: CM35P
+    - layer: ./Target/CM35P/Target.clayer.yml
+      for-context:
+        - +CM35P
+
+    #Target: CM35PS
+    - layer: ./Target/CM35PS/Target.clayer.yml
+      for-context:
+        - +CM35PS
+
+    #Target: CM35PNS
+    - layer: ./Target/CM35PNS/Target.clayer.yml
+      for-context:
+        - +CM35PNS
+
+    #Target: CM52
+    - layer: ./Target/CM52/Target.clayer.yml
+      for-context:
+        - +CM52
+
+    #Target: CM52S
+    - layer: ./Target/CM52S/Target.clayer.yml
+      for-context:
+        - +CM52S
+
+    #Target: CM52NS
+    - layer: ./Target/CM52NS/Target.clayer.yml
+      for-context:
+        - +CM52NS
+
+    #Target: CM55
+    - layer: ./Target/CM55/Target.clayer.yml
+      for-context:
+        - +CM55
+
+    #Target: CM55S
+    - layer: ./Target/CM55S/Target.clayer.yml
+      for-context:
+        - +CM55S
+
+    #Target: CM55NS
+    - layer: ./Target/CM55NS/Target.clayer.yml
+      for-context:
+        - +CM55NS
+
+    #Target: CM85
+    - layer: ./Target/CM85/Target.clayer.yml
+      for-context:
+        - +CM85
+
+    #Target: CM85S
+    - layer: ./Target/CM85S/Target.clayer.yml
+      for-context:
+        - +CM85S
+
+    #Target: CM85NS
+    - layer: ./Target/CM85NS/Target.clayer.yml
+      for-context:
+        - +CM85NS
 
   output:
     base-name: $TargetType$_$Project$ # used the base name of the `cproject.yml` file.

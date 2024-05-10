@@ -42,11 +42,11 @@ __attribute__((weak)) EI_IMPULSE_ERROR ei_sleep(int32_t time_ms) {
 }
 
 uint64_t ei_read_timer_ms() {
-    return systick_handler_get();
+    return systick_handler_get() * 1000;
 }
 
 uint64_t ei_read_timer_us() {
-    return ei_read_timer_ms() * 1000;
+    return systick_handler_get();
 }
 
 __attribute__((weak)) void ei_printf(const char *format, ...) {

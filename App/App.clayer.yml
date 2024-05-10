@@ -1,0 +1,20 @@
+layer:
+  type: Target
+  description: Application files and configurations
+
+  packs:
+    - pack: EdgeImpulse::Tutorial_Continuous_motion_recog@156.0.0
+
+  components:
+    # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]    
+    - component: ARM::CMSIS:DSP
+    - component: ARM::CMSIS:NN
+    - component: EdgeImpulse::EdgeImpulse:SDK    
+    - component: EdgeImpulse::EdgeImpulse:model:Tutorial_Continuous_motion_recog
+
+  groups:
+    - group: Application
+      files:
+        - file: ./src/main.cpp
+        - file: ./src/ei_classifier_porting.cpp
+        - file: ./src/systick_handler.cpp        

@@ -24,13 +24,6 @@
 static uint32_t _ms_count;
 static uint32_t fact;
 
-#if 0
-void SysTick_Handler(void)
-{    
-    _ms_count++;
-}
-#endif
-
 /**
  * @brief 
  * 
@@ -41,9 +34,8 @@ void systick_handler_init(void)
 
     // Set SysTick Interrupt Priority
     NVIC_SetPriority (SysTick_IRQn, (1<<__NVIC_PRIO_BITS) - 1);
-  
-    fact = (SystemCoreClock / 1000);
-    //SysTick->LOAD =  (SystemCoreClock / 1000) - 1U;  // reload value to 1 ms
+    fact = (SystemCoreClock / 1000000);
+    
     SysTick->LOAD = 0xFFFFFF;   // 24 bit timer
     SysTick->VAL  =  0U;    //
     SysTick->CTRL =  SysTick_CTRL_CLKSOURCE_Msk // processor clock source
@@ -58,14 +50,12 @@ void systick_handler_init(void)
  */
 uint32_t systick_handler_get(void)
 {
-#if 1
     SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;  // stop
 
     _ms_count += ((SysTick->LOAD - SysTick->VAL) / fact);
     SysTick->VAL  =  0U;    // reset
 
     SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;   // restart
-#endif
 
     return (_ms_count);
 }

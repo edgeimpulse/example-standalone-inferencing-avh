@@ -1,9 +1,9 @@
 solution:
-
-  created-for: CMSIS-Toolbox@2.3.0
+  created-for: cmsis-toobox@2.3.0
 
   description: Example standalone inferencing project for CMSIS Toolbox
   cdefault:
+
   misc:
     - for-compiler: GCC
       C:
@@ -46,87 +46,87 @@ solution:
       CPP:
         - -std=c++11
         - -fno-rtti
-
-  # language-C: c99 # same effect ?
-  # language-CPP: c++11
+      Link:
+        - --entry=Reset_Handler
 
 # List the packs that define the device and/or board
   packs:
     - pack: ARM::CMSIS@6.0.0
     - pack: ARM::CMSIS-DSP@1.15.0
     - pack: ARM::CMSIS-NN@4.0.0
-    - pack: ARM::Cortex_DFP@1.0.0
-    - pack: EdgeImpulse::EI-SDK@1.49.4
-    # add you model here
-    # - pack: EdgeImpulse::project_name@version
-    #- pack: EdgeImpulse::Tutorial_Continuous_motion_recog@155.0.0
+    - pack: EdgeImpulse::EI-SDK    
 
 # List different hardware targets that are used to deploy the solution
   target-types:
+    #Target: CM0
     - type: CM0
-      device: ARMCM0
-      variables:
-        - Target-Layer: Target/CM0/Target.clayer.yml
+
+    #Target: CM0plus
     - type: CM0plus
-      device: ARMCM0P
-      variables:
-        - Target-Layer: Target/CM0plus/Target.clayer.yml
+
+    #Target: CM3
     - type: CM3
-      device: ARMCM3
-      variables:
-        - Target-Layer: Target/CM3/Target.clayer.yml
+
+    #Target: CM4
     - type: CM4
-      device: ARMCM4
-      processor:
-        fpu: off
-      variables:
-        - Target-Layer: Target/CM4/Target.clayer.yml
-    - type: CM4_FP
-      device: ARMCM4_FP
-      variables:
-        - Target-Layer: Target/CM4/Target.clayer.yml
+
+    #Target: CM7
     - type: CM7
-      device: ARMCM7
-      variables:
-        - Target-Layer: Target/CM7/Target.clayer.yml
-    - type: CM7_SP
-      device: ARMCM7_SP
-      variables:
-        - Target-Layer: Target/CM7/Target.clayer.yml
-    - type: CM7_DP
-      device: ARMCM7_DP
-      variables:
-        - Target-Layer: Target/CM7/Target.clayer.yml
+
+    #Target: CM23
     - type: CM23
-      device: ARMCM23
-      processor:
-        trustzone: off
-      variables:
-        - Target-Layer: Target/CM23/Target.clayer.yml
+
+    #Target: CM23S
+    - type: CM23S
+
+    #Target: CM23NS
+    - type: CM23NS
+
+    #Target: CM33
     - type: CM33
-      device: ARMCM33
-      processor:
-        trustzone: off
-      variables:
-        - Target-Layer: Target/CM33/Target.clayer.yml
-    - type: CM33_DSP_FP
-      device: ARMCM33_DSP_FP
-      processor:
-        trustzone: off
-      variables:
-        - Target-Layer: Target/CM33/Target.clayer.yml    
+
+    #Target: CM33S
+    - type: CM33S
+
+    #Target: CM33NS
+    - type: CM33NS
+
+    #Target: CM35P
+    - type: CM35P
+
+    #Target: CM35PS
+    - type: CM35PS
+
+    #Target: CM35PNS
+    - type: CM35PNS
+
+    #Target: CM52
+    - type: CM52
+
+    #Target: CM52S
+    - type: CM52S
+
+    #Target: CM52NS
+    - type: CM52NS
+
+    #Target: CM55
     - type: CM55
-      device: ARMCM55
-      processor:
-        trustzone: off
-      variables:
-        - Target-Layer: Target/CM55/Target.clayer.yml
-    - type: CM55_Ethos
-      device: ARMCM55
-      processor:
-        trustzone: off
-      variables:
-        - Target-Layer: Target/CM55_Ethos/Target.clayer.yml
+
+    #Target: CM55S
+    - type: CM55S
+
+    #Target: CM55NS
+    - type: CM55NS
+
+    #Target: CM85
+    - type: CM85
+
+    #Target: CM85S
+    - type: CM85S
+
+    #Target: CM85NS
+    - type: CM85NS
+
 #    - type: CM85
 #      device: ARMCM85
 #      processor:
@@ -142,14 +142,27 @@ solution:
       
 # List different build types
   build-types:
-    - type: Debug
+    - type: none
+      optimize: none
       debug: on
-      optimize: speed
 
-    - type: Release
-      debug: off
+    - type: balanced
       optimize: balanced
+      debug: on
+
+    - type: size
+      optimize: size
+      debug: on
+
+    - type: speed
+      optimize: speed
+      debug: on
 
 # List related projects
   projects:
     - project: inferencing.cproject.yml
+
+  output-dirs:
+    cprjdir: ./build/$TargetType$/$Compiler$/$BuildType$/$Project$
+    intdir:  ./build/$TargetType$/$Compiler$/$BuildType$/$Project$/intdir
+    outdir:  ./build/$TargetType$/$Compiler$/$BuildType$/$Project$/outdir
