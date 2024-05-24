@@ -55,6 +55,18 @@ Check the [CMSIS-Toolbox User Guide](https://github.com/Open-CMSIS-Pack/cmsis-to
 ### Using CMSIS toolbox extension
 In the CMSIS view, click on the hammer icon.
 
+### Using docker
+This repository contains a docker image with the required dependencies for building with gcc and llvm:
+```
+docker build -t standalone-csolution .
+```
+
+Build the the firmware with following command:
+```
+docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "sh build.sh"
+```
+
+
 ## Run on AVH
 The basic usage is:
 ```sh
