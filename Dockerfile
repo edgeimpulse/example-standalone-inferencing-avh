@@ -26,5 +26,3 @@ RUN chmod +x /armgcc_install.sh && /bin/bash /armgcc_install.sh && rm /armgcc_in
 
 COPY ./tools/cmsistoolbox_install.sh /cmsistoolbox_install.sh
 RUN chmod +x /cmsistoolbox_install.sh && /bin/bash /cmsistoolbox_install.sh && rm /cmsistoolbox_install.sh
-
-#RUN cpackget init https://www.keil.com/pack/index.pidx

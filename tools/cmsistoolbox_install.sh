@@ -4,7 +4,7 @@ set -e
 cd /
 
 if [ $(uname -m) = "x86_64" ]; then
-    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.3.0/cmsis-toolbox-linux-amd64.tar.gz -nv
+    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.4.0/cmsis-toolbox-linux-amd64.tar.gz -nv
     wget https://github.com/Kitware/CMake/releases/download/v3.29.3/cmake-3.29.3-linux-x86_64.sh -nv
     tar -xf cmsis-toolbox-linux-amd64.tar.gz
     rm -f cmsis-toolbox-linux-amd64.tar.gz
@@ -12,7 +12,7 @@ if [ $(uname -m) = "x86_64" ]; then
     mkdir /cmake
     ./cmake-3.29.3-linux-x86_64.sh --skip-license --prefix=/cmake
 else
-    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.3.0/cmsis-toolbox-linux-arm64.tar.gz -nv
+    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.4.0/cmsis-toolbox-linux-arm64.tar.gz -nv
     wget https://github.com/Kitware/CMake/releases/download/v3.29.3/cmake-3.29.3-linux-aarch64.sh -nv
     tar -xf cmsis-toolbox-linux-arm64.tar.gz
     rm -f cmsis-toolbox-linux-arm64.tar.gz
@@ -22,7 +22,11 @@ else
 fi
 
 mkdir /ninja
-wget -qO /ninja/ninja.gz https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux.zip -nv
+if [ $(uname -m) = "x86_64" ]; then
+    wget -qO /ninja/ninja.gz https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux.zip -nv
+else
+    wget -qO /ninja/ninja.gz https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux-aarch64.zip
+fi
 gunzip /ninja/ninja.gz 
 chmod a+x /ninja/ninja 
 
