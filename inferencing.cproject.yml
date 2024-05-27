@@ -2,6 +2,7 @@ project:
 
   layers:
     - layer: ./App/App.clayer.yml
+    - layer: ./App/model.clayer.yml
 
    #Target: CM0
     - layer: ./Target/CM0/Target.clayer.yml

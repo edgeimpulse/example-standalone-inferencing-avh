@@ -1,5 +1,5 @@
 solution:
-  created-for: cmsis-toobox@2.3.0
+  created-for: cmsis-toobox@2.4.0
 
   description: Example standalone inferencing project for CMSIS Toolbox
   cdefault:
@@ -54,7 +54,6 @@ solution:
     - pack: ARM::CMSIS@6.0.0
     - pack: ARM::CMSIS-DSP@1.15.0
     - pack: ARM::CMSIS-NN@4.0.0
-    - pack: EdgeImpulse::EI-SDK    
 
 # List different hardware targets that are used to deploy the solution
   target-types:

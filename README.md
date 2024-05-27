@@ -1,5 +1,5 @@
 # Edge Impulse Example: stand-alone inferencing for CMSIS toolbox
-Example standalone inferecing for AVH created for CMSIS toolbox v2.3.0
+Example standalone inferecing for AVH created for CMSIS toolbox v2.4.0
 
 ## Prerequisites
 To add your model to your component library you need to use the cpackget utility:
@@ -9,10 +9,20 @@ cpackget add <your_model>.pack
 Then you ned to add it to the solution and the project.
 
 ### Solution
-In [App.clayer.yml](inferencing.csolution.yml), substitute
-\# - pack: EdgeImpulse::project_name@version
-with
-- pack: EdgeImpulse::project_name@version
+In the App folder, create a model.clayer.yml file with the following info:
+```
+layer:
+  type: Target
+  description: Edge Impulse model
+
+  packs:
+    - pack: EdgeImpulse::your_project_name@x.y.z
+
+  components:
+  # Add the model component here, ie
+    - component: EdgeImpulse:model:your_project_name@x.y.z
+```
+and sobstitutes the `your_project_name` with your project name and `x.y.z` with the version number.
 
 ### Project
 In [App.clayer.yml](inferencing.cproject.yml), substitute
