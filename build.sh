@@ -33,4 +33,23 @@ else
     rm -f inferencing.cbuild-set.yml
     echo "Building firmware for ${TARGET} using ${TOOLCHAIN} toolchain"
     cbuild ./inferencing.csolution.yml --context-set --update-rte --packs --context inferencing.speed+${TARGET} --toolchain ${TOOLCHAIN}
+    if [ "$TARGET" == "CM0" ]; then
+        FVP_MPS2_Cortex-M0 -f ./Target/CM0/model_config.txt ./build/CM0/GCC/speed/inferencing/outdir/CM0_inferencing.elf
+    elif [ "$TARGET" == "CM0plus" ]; then
+        FVP_MPS2_Cortex-M0plus -f ./Target/CM0plus/model_config.txt ./build/CM0plus/GCC/speed/inferencing/outdir/CM0plus_inferencing.elf
+    elif [ "$TARGET" == "CM3" ]; then
+        FVP_MPS2_Cortex-M3 -f ./Target/CM3/model_config.txt ./build/CM3/GCC/speed/inferencing/outdir/CM3_inferencing.elf
+    elif [ "$TARGET" == "CM4" ]; then
+        FVP_MPS2_Cortex-M4 -f ./Target/CM4/model_config.txt ./build/CM4/GCC/speed/inferencing/outdir/CM4_inferencing.elf
+    elif [ "$TARGET" == "CM7" ]; then
+        FVP_MPS2_Cortex-M7 -f ./Target/CM7/model_config.txt ./build/CM7/GCC/speed/inferencing/outdir/CM7_inferencing.elf
+    elif [ "$TARGET" == "CM33" ]; then
+        FVP_MPS2_Cortex-M33 -f ./Target/CM33/model_config.txt ./build/CM33/GCC/speed/inferencing/outdir/CM33_inferencing.elf
+    elif [ "$TARGET" == "CM55" ]; then
+        FVP_MPS2_Cortex-M55 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
+    elif [ "$TARGET" == "CM85" ]; then
+        FVP_MPS2_Cortex-M85 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
+    else
+        echo "No AVH available for ${TARGET}"
+    fi
 fi

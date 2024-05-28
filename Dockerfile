@@ -5,14 +5,17 @@ WORKDIR /app
 
 RUN  apt-get update && apt-get install -y wget sudo software-properties-common && rm -rf /var/lib/apt/lists/*
 
-#ADD ./tools/armclang_install.sh /armclang_install.sh
-#RUN chmod +x /armclang_install.sh && /armclang_install.sh
+ADD ./tools/armclang_install.sh /armclang_install.sh
+RUN chmod +x /armclang_install.sh && /armclang_install.sh
+ENV PATH="/ArmCompilerforEmbedded6.20/bin:${PATH}"
+ENV AC6_TOOLCHAIN_6_20_1="/ArmCompilerforEmbedded6.20/bin:"
 
 COPY ./tools/vela_install.sh /vela_install.sh
 RUN chmod +x /vela_install.sh && /bin/bash /vela_install.sh && rm /vela_install.sh
 
 COPY ./tools/avh-fvp_install.sh /avh-fvp_install.sh
 RUN chmod +x /avh-fvp_install.sh && /bin/bash /avh-fvp_install.sh && rm /avh-fvp_install.sh
+ENV PATH="/avh-fvp-linux/bin:${PATH}"
 
 COPY ./tools/armllvm_install.sh /armllvm_install.sh
 RUN chmod +x /armllvm_install.sh && /armllvm_install.sh && rm /armllvm_install.sh
@@ -30,3 +33,12 @@ ENV CMSIS_COMPILER_ROOT="/cmsis-toolbox-linux/etc"
 ENV PATH="/cmsis-toolbox-linux/bin:/ninja/:/cmake/bin/:${PATH}"
 
 RUN cpackget init https://www.keil.com/pack/index.pidx
+
+# license handling
+ADD arm_mlops_docker_license* /
+
+RUN if [ -f /arm_mlops_docker_license ]; then \
+    armlm import --file /arm_mlops_docker_license; \
+    else \
+    armlm activate -product KEMDK-COM0 -server https://mdk-preview.keil.arm.com; \
+    fi

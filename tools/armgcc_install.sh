@@ -15,5 +15,4 @@ else
     rm -f arm-gnu-toolchain-aarch64-arm-none-eabi.tar.bz2
     mkdir /arm-gnu-toolchain-13.2.Rel1-arm-none-eabi
     ln -s /arm-gnu-toolchain-13.2.Rel1-aarch64-arm-none-eabi/* /arm-gnu-toolchain-13.2.Rel1-arm-none-eabi/
-
 fi

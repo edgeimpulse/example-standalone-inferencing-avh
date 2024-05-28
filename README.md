@@ -75,7 +75,7 @@ Copy the content of the deployment for your project in the pack folder.
 
 Build the the firmware with following command:
 ```
-docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "build.sh"
+docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "./build.sh"
 ```
 
 
