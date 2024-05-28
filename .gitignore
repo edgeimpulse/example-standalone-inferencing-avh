@@ -9,6 +9,7 @@
 !inferencing.cproject.yml
 !Target.clayer.yml
 !App.clayer.yml
+*.pack
 
 RTE/
 out/

@@ -5,20 +5,26 @@ cd /
 
 if [ $(uname -m) = "x86_64" ]; then
     wget https://artifacts.tools.arm.com/cmsis-toolbox/2.4.0/cmsis-toolbox-linux-amd64.tar.gz -nv
-    wget https://github.com/Kitware/CMake/releases/download/v3.29.3/cmake-3.29.3-linux-x86_64.sh -nv
     tar -xf cmsis-toolbox-linux-amd64.tar.gz
     rm -f cmsis-toolbox-linux-amd64.tar.gz
-    chmod +x cmake-3.29.3-linux-x86_64.sh
+    mkdir /cmsis-toolbox-linux
+    ln -s /cmsis-toolbox-linux-amd64/* /cmsis-toolbox-linux/
+
+    wget https://github.com/Kitware/CMake/releases/download/v3.29.3/cmake-3.29.3-linux-x86_64.sh -nv
     mkdir /cmake
-    ./cmake-3.29.3-linux-x86_64.sh --skip-license --prefix=/cmake
+    sh cmake-3.29.3-linux-x86_64.sh --prefix=/cmake --skip-license
+    ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 else
-    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.4.0/cmsis-toolbox-linux-arm64.tar.gz -nv
-    wget https://github.com/Kitware/CMake/releases/download/v3.29.3/cmake-3.29.3-linux-aarch64.sh -nv
+    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.4.0/cmsis-toolbox-linux-arm64.tar.gz -nv    
     tar -xf cmsis-toolbox-linux-arm64.tar.gz
     rm -f cmsis-toolbox-linux-arm64.tar.gz
-    chmod +x cmake-3.29.3-linux-aarch64.sh
+    mkdir /cmsis-toolbox-linux
+    ln -s /cmsis-toolbox-linux-arm64/* /cmsis-toolbox-linux/
+
+    wget https://github.com/Kitware/CMake/releases/download/v3.29.3/cmake-3.29.3-linux-aarch64.sh -nv
     mkdir /cmake
-    ./cmake-3.29.3-linux-aarch64.sh --skip-license --prefix=/cmake
+    sh cmake-3.29.3-linux-aarch64.sh --prefix=/cmake --skip-license
+    rm ./cmake-3.29.3-linux-aarch64.sh    
 fi
 
 mkdir /ninja
@@ -27,18 +33,6 @@ if [ $(uname -m) = "x86_64" ]; then
 else
     wget -qO /ninja/ninja.gz https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux-aarch64.zip
 fi
-gunzip /ninja/ninja.gz 
-chmod a+x /ninja/ninja 
 
-echo 'export PATH=/cmake/bin:/ninja/:$PATH' >> ~/.bashrc
-echo 'CMSIS_PACK_ROOT="/packs"' >> ~/.bashrc
-
-if [ $(uname -m) = "x86_64" ]; then
-    echo 'export PATH=/cmsis-toolbox-linux-amd64/bin:$PATH' >> ~/.bashrc
-    echo 'CMSIS_COMPILER_ROOT=/cmsis-toolbox-linux-amd64/etc' >> ~/.bashrc
-    /cmsis-toolbox-linux-amd64/bin/cpackget init https://www.keil.com/pack/index.pidx
-else
-    echo 'export PATH=/cmsis-toolbox-linux-arm64/bin:$PATH' >> ~/.bashrc
-    echo 'CMSIS_COMPILER_ROOT=/cmsis-toolbox-linux-arm64/etc' >> ~/.bashrc
-    /cmsis-toolbox-linux-arm64/bin/cpackget init https://www.keil.com/pack/index.pidx
-fi
+gunzip /ninja/ninja.gz
+chmod a+x /ninja/ninja

@@ -18,6 +18,8 @@ for pack in $(ls ./pack/*.pack); do
     cpackget add ${pack} -a
 done
 
+cpackget update-index
+
 if [ "$TARGET" == "clean" ]; then
     echo "Cleaning build"
     cbuild ./inferencing.csolution.yml --context-set --update-rte --packs --context inferencing -C

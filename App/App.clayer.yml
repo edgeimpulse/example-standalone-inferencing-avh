@@ -2,8 +2,10 @@ layer:
   type: Target
   description: Application files and configurations
 
-  components:
-    # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]    
+  packs:
+    - pack: EdgeImpulse::EI-SDK
+
+  components:  
     - component: ARM::CMSIS:DSP
     - component: ARM::CMSIS:NN
     - component: EdgeImpulse::EdgeImpulse:SDK
