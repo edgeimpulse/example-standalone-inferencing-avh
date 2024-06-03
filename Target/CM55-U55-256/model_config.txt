@@ -8,4 +8,10 @@ cpu0.semihosting-stack_base=0x30040000                # (int   , init-time) defa
 cpu0.semihosting-stack_limit=0x3003f000               # (int   , init-time) default = '0x20700000' : Virtual address of stack limit
 mps3_board.telnetterminal0.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
 mps3_board.visualisation.disable-visualisation=1      # (bool  , init-time) default = '0'      : Enable/disable visualisation
+mps3_board.DISABLE_GATING=1                           # (bool  , init-time) default = '0'      : Disable Memory gating logic
+cpu0.FPU=1                                            # (bool  , init-time) default = '1'      : Set whether the model has VFP support
+cpu0.MVE=2                                            # (int   , init-time) default = '0x1'    : Set whether the model has MVE support. If FPU = 0: 0=MVE not included, 1=Integer subset of MVE included. If FPU = 1: 0=MVE not included, 1=Integer subset of MVE included, 2=Integer and half and single precision floating point MVE included
+cpu0.ITM=0                                            # (bool  , init-time) default = '1'      : Level of instrumentation trace supported. false : No ITM trace included, true: ITM trace included
+cpu0.CPIF=1                                           # (bool  , init-time) default = '1'      : Specifies whether the external coprocessor interface is included
+ethosu.num_macs=256                                   # (int   , init-time) default = '0x80'   : Number of 8x8 MACs performed per cycle
 #----------------------------------------------------------------------------------------------

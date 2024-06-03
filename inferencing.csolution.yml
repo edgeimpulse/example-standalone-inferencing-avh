@@ -75,69 +75,26 @@ solution:
     #Target: CM23
     - type: CM23
 
-    #Target: CM23S
-    - type: CM23S
-
-    #Target: CM23NS
-    - type: CM23NS
-
     #Target: CM33
     - type: CM33
-
-    #Target: CM33S
-    - type: CM33S
-
-    #Target: CM33NS
-    - type: CM33NS
 
     #Target: CM35P
     - type: CM35P
 
-    #Target: CM35PS
-    - type: CM35PS
-
-    #Target: CM35PNS
-    - type: CM35PNS
-
     #Target: CM52
     - type: CM52
-
-    #Target: CM52S
-    - type: CM52S
-
-    #Target: CM52NS
-    - type: CM52NS
 
     #Target: CM55
     - type: CM55
 
-    #Target: CM55S
-    - type: CM55S
+    #Target: CM55-U55-128
+    - type: CM55-U55-128
 
-    #Target: CM55NS
-    - type: CM55NS
+    #Target: CM55-U55-256
+    - type: CM55-U55-256
 
     #Target: CM85
     - type: CM85
-
-    #Target: CM85S
-    - type: CM85S
-
-    #Target: CM85NS
-    - type: CM85NS
-
-#    - type: CM85
-#      device: ARMCM85
-#      processor:
-#        trustzone: off
-#      variables:
-#        - Target-Layer: Target/CM85/Target.clayer.yml
-#    - type: CM85_Ethos
-#      device: ARMCM85
-#      processor:
-#        trustzone: off
-#      variables:
-#        - Target-Layer: Target/CM85_Ethos/Target.clayer.yml
       
 # List different build types
   build-types:
