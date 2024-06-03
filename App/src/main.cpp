@@ -18,6 +18,7 @@
 #include "ei_run_classifier.h"
 #include "edge-impulse-sdk/porting/ei_classifier_porting.h"
 #include "systick_handler.h"
+#include "board_init.h"
 
 static const float features[] = { 
         // copy raw features here (for example from the 'Live classification' page)
@@ -33,6 +34,8 @@ int raw_feature_get_data(size_t offset, size_t length, float *out_ptr)
 int main(void)
 {
     ei_impulse_result_t result = {nullptr};
+
+    board_init();
     systick_handler_init();
 
     ei_printf("Edge Impulse standalone inferencing (AVH)\n");
