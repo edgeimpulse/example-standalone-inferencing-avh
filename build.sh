@@ -41,6 +41,8 @@ else
         FVP_MPS2_Cortex-M3 -f ./Target/CM3/model_config.txt ./build/CM3/GCC/speed/inferencing/outdir/CM3_inferencing.elf
     elif [ "$TARGET" == "CM4" ]; then
         FVP_MPS2_Cortex-M4 -f ./Target/CM4/model_config.txt ./build/CM4/GCC/speed/inferencing/outdir/CM4_inferencing.elf
+    elif [ "$TARGET" == "CM4-FP" ]; then
+        FVP_MPS2_Cortex-M4 -f ./Target/CM4-FP/model_config.txt ./build/CM4-FP/GCC/speed/inferencing/outdir/CM4-FP_inferencing.elf
     elif [ "$TARGET" == "CM7" ]; then
         FVP_MPS2_Cortex-M7 -f ./Target/CM7/model_config.txt ./build/CM7/GCC/speed/inferencing/outdir/CM7_inferencing.elf
     elif [ "$TARGET" == "CM33" ]; then

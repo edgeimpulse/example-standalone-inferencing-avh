@@ -24,6 +24,11 @@ project:
       for-context:
         - +CM4
 
+    #Target: CM4-FP
+    - layer: ./Target/CM4-FP/Target.clayer.yml
+      for-context:
+        - +CM4-FP
+
     #Target: CM7
     - layer: ./Target/CM7/Target.clayer.yml
       for-context:
