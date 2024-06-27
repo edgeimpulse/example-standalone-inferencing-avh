@@ -48,21 +48,23 @@ else
     elif [ "$TARGET" == "CM33" ]; then
         FVP_MPS2_Cortex-M33 -f ./Target/CM33/model_config.txt ./build/CM33/GCC/speed/inferencing/outdir/CM33_inferencing.elf
     elif [ "$TARGET" == "CM55" ]; then
-        #FVP_MPS2_Cortex-M55 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
-        FVP_Corstone_SSE-300 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
+        FVP_MPS2_Cortex-M55 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
+        #FVP_Corstone_SSE-300 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
     elif [ "$TARGET" == "CM55-U55-128" ]; then
         FVP_Corstone_SSE-300_Ethos-U55 -f ./Target/CM55-U55-128/model_config.txt ./build/CM55-U55-128/GCC/speed/inferencing/outdir/CM55-U55-128_inferencing.elf
     elif [ "$TARGET" == "CM55-U55-256" ]; then
         FVP_Corstone_SSE-300_Ethos-U55 -f ./Target/CM55-U55-256/model_config.txt ./build/CM55-U55-256/GCC/speed/inferencing/outdir/CM55-U55-256_inferencing.elf
     elif [ "$TARGET" == "CM55-U65" ]; then
-        FVP_Corstone_SSE-300_Ethos-U65 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
+        echo "Ethos-U65 not supported yet"
+        #FVP_Corstone_SSE-300_Ethos-U65 -f ./Target/CM55-U65/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
     elif [ "$TARGET" == "CM85" ]; then
-        #echo "Test with FVP_MPS2_Cortex-M85"
-        #FVP_MPS2_Cortex-M85 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
-        echo "Test with FVP_Corstone_SSE-310"
-        FVP_Corstone_SSE-310 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
+        echo "Test with FVP_MPS2_Cortex-M85"
+        FVP_MPS2_Cortex-M85 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
+        #echo "Test with FVP_Corstone_SSE-310"
+        #FVP_Corstone_SSE-310 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
     elif [ "$TARGET" == "CM85-U65" ]; then
-        FVP_Corstone_SSE-310_Ethos-U65 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
+        echo "Ethos-U65 not supported yet"
+        #FVP_Corstone_SSE-310_Ethos-U65 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
     else
         echo "No AVH available for ${TARGET}"
     fi
