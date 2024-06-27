@@ -57,10 +57,10 @@ else
     elif [ "$TARGET" == "CM55-U65" ]; then
         FVP_Corstone_SSE-300_Ethos-U65 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
     elif [ "$TARGET" == "CM85" ]; then
-        echo "Test with FVP_MPS2_Cortex-M85"
-        FVP_MPS2_Cortex-M85 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
-        #echo "Test with FVP_Corstone_SSE-310"
-        #FVP_Corstone_SSE-310 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
+        #echo "Test with FVP_MPS2_Cortex-M85"
+        #FVP_MPS2_Cortex-M85 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
+        echo "Test with FVP_Corstone_SSE-310"
+        FVP_Corstone_SSE-310 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
     elif [ "$TARGET" == "CM85-U65" ]; then
         FVP_Corstone_SSE-310_Ethos-U65 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/speed/inferencing/outdir/CM85_inferencing.elf
     else

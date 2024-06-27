@@ -78,7 +78,7 @@ static int arm_ethosu_npu_init(void)
     arm_ethosu_npu_irq_init();
 
     /* Initialise Ethos-U device */
-    const void* ethosu_base_address = (void*)(ETHOS_U55_APB_BASE_S);
+    void* const ethosu_base_address = reinterpret_cast<void*>(ETHOS_U55_APB_BASE_S);
     ei_printf("ETHOS_U55_APB_BASE_S %d\n", ETHOS_U55_APB_BASE_S);
     ei_printf("get_cache_arena_size %d\n", get_cache_arena_size());
 

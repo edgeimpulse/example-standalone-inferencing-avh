@@ -16,6 +16,7 @@ layer:
     - EI_ALIF_ADDR_TRANSLATION
     - ARM_NPU
     - EI_CONFIG_ETHOS_U55_256
+    - ETHOSU_ARCH: u55
 
   components:
     # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]
