@@ -3,4 +3,6 @@
 #----------------------------------------------------------------------------------------------
 fvp_mps2.mps2_visualisation.disable-visualisation=1   # (bool  , init-time) default = '0'      : Enable/disable visualisation
 armcortexm7ct.vfp-present=1                           # (bool  , init-time) default = '1'      : Set whether the model has VFP support
+armcortexm7ct.itcm_enable=1
+armcortexm7ct.dtcm_enable=1 
 #----------------------------------------------------------------------------------------------

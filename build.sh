@@ -6,7 +6,7 @@ TARGET=$1
 TOOLCHAIN=$2
 
 if [ -z "$TARGET" ]; then
-    TARGET="CM4"
+    TARGET="CM4-FP"
 fi
 
 if [ -z "$TOOLCHAIN" ]; then
@@ -48,8 +48,8 @@ else
     elif [ "$TARGET" == "CM33" ]; then
         FVP_MPS2_Cortex-M33 -f ./Target/CM33/model_config.txt ./build/CM33/GCC/speed/inferencing/outdir/CM33_inferencing.elf
     elif [ "$TARGET" == "CM55" ]; then
-        FVP_MPS2_Cortex-M55 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
-        #FVP_Corstone_SSE-300 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
+        #FVP_MPS2_Cortex-M55 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
+        FVP_Corstone_SSE-300 -f ./Target/CM55/model_config.txt ./build/CM55/GCC/speed/inferencing/outdir/CM55_inferencing.elf
     elif [ "$TARGET" == "CM55-U55-128" ]; then
         FVP_Corstone_SSE-300_Ethos-U55 -f ./Target/CM55-U55-128/model_config.txt ./build/CM55-U55-128/GCC/speed/inferencing/outdir/CM55-U55-128_inferencing.elf
     elif [ "$TARGET" == "CM55-U55-256" ]; then

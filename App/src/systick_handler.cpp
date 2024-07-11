@@ -21,6 +21,10 @@
 #define SYSTICK_IRQ_PRIORITY    0xFFU
 #endif
 
+#ifndef SYSTICK_CORRECTION_FACTOR
+#define SYSTICK_CORRECTION_FACTOR    (1.0)
+#endif
+
 static uint32_t _ms_count;
 static uint32_t fact;
 
@@ -57,5 +61,5 @@ uint32_t systick_handler_get(void)
 
     SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;   // restart
 
-    return (_ms_count);
+    return (_ms_count * SYSTICK_CORRECTION_FACTOR);
 }

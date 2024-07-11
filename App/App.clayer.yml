@@ -17,3 +17,4 @@ layer:
         - file: ./src/ei_classifier_porting.cpp
         - file: ./src/systick_handler.cpp
         - file: ./src/board_init.cpp
+        - file: ./src/cycle_handler.cpp
