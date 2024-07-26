@@ -37,5 +37,7 @@ extern void cycle_counter_start(void);
 extern void cycle_counter_stop(void);
 extern void cycle_counter_reset(void);
 extern void cycle_counter_get(cycle_counter_t* cc);
+extern int cycle_prof_counters_available(void);
+extern int cycle_counter_available(void);
 
 #endif /* _CYCLE_HANDLER_H_ */

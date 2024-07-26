@@ -14,9 +14,9 @@
  *
  */
 
+#include "cycle_handler.h"
 #include "RTE_Components.h"
 #include CMSIS_device_header
-#include "cycle_handler.h"
 
 #if defined(DWT)
 
@@ -35,21 +35,19 @@
 #define CM_DWT_LSUCNT          (*((volatile uint32_t*)0xE0001014))
 #define CM_DWT_FOLDCNT         (*((volatile uint32_t*)0xE0001018))
 
-
+volatile uint32_t dwt_ctrl;
 
 /**
  * @brief Initialize cycle counter
  * 
  */
 void cycle_counter_init(void)
-{
+{    
     CM_DEMCR |= CM_TRCENA_BIT;
-    //DCB->DEMCR |= DCB_DEMCR_TRCENA_Msk;
     CM_DWT_LAR = 0xC5ACCE55;
     //ITM->LAR = 0xC5ACCE55;
 
     DWT->CYCCNT = 0;
-    //DWT->CTRL |= 1UL;
 }
 
 /**
@@ -58,8 +56,11 @@ void cycle_counter_init(void)
  */
 void cycle_counter_start(void)
 {    
-    DWT->CYCCNT = 0;
-    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+    cycle_counter_reset();
+    DWT->CTRL = _VAL2FLD(DWT_CTRL_CYCCNTENA, 1) | _VAL2FLD(DWT_CTRL_CPIEVTENA, 1) |
+                _VAL2FLD(DWT_CTRL_EXCEVTENA, 1) | _VAL2FLD(DWT_CTRL_SLEEPEVTENA, 1) |
+                _VAL2FLD(DWT_CTRL_LSUEVTENA, 1) | _VAL2FLD(DWT_CTRL_FOLDEVTENA, 1) |
+                _VAL2FLD(DWT_CTRL_CYCEVTENA, 1);
 }
 
 /**
@@ -76,11 +77,13 @@ void cycle_counter_stop(void)
  * 
  */
 void cycle_counter_reset(void)
-{
-    DWT->CPICNT = 0;
+{    
     DWT->CYCCNT = 0;
-    DWT->FOLDCNT = 0;
+    DWT->CPICNT = 0;
+    DWT->EXCCNT = 0;
+    DWT->SLEEPCNT = 0;
     DWT->LSUCNT = 0;
+    DWT->FOLDCNT = 0;
 }
 
 /**
@@ -94,6 +97,21 @@ void cycle_counter_get(cycle_counter_t* cc)
     cc->_CYCCNT = DWT->CYCCNT;
     cc->_FOLDCNT = DWT->FOLDCNT;
     cc->_LSUCNT = DWT->LSUCNT;
+}
+
+/**
+ * @brief
+ */
+int cycle_prof_counters_available(void)
+{
+    dwt_ctrl = CM_DWT_CONTROL;
+    return ((DWT->CTRL & DWT_CTRL_NOCYCCNT_Msk) << DWT_CTRL_NOCYCCNT_Pos);
+}
+
+int cycle_counter_available(void)
+{
+    dwt_ctrl = CM_DWT_CONTROL;
+    return ((DWT->CTRL & DWT_CTRL_NOPRFCNT_Msk) << DWT_CTRL_NOPRFCNT_Pos);
 }
 
 #endif
