@@ -1,15 +1,15 @@
 # Edge Impulse Example: stand-alone inferencing for CMSIS toolbox
-Example standalone inferecing for AVH created for CMSIS toolbox v2.4.0
+Example standalone inferencing for AVH created for CMSIS toolbox v2.4.0
 
 ## Prerequisites
-To add your model to your component library you need to use the cpackget utility:
+To add your model to your component library you need to use the `cpackget` utility:
 ```sh
 cpackget add <your_model>.pack
 ```
-Then you ned to add it to the solution and the project.
+Then you need to add it to the solution and the project.
 
 ### Solution
-In the App folder, create a model.clayer.yml file with the following info:
+In the App folder, create a `model.clayer.yml` file with the following info:
 ```
 layer:
   type: Target
@@ -22,7 +22,7 @@ layer:
   # Add the model component here, ie
     - component: EdgeImpulse:model:your_project_name@x.y.z
 ```
-and sobstitutes the `your_project_name` with your project name and `x.y.z` with the version number.
+and substitute `your_project_name` with your project name and `x.y.z` with the version number.
 
 ### Project
 In [App.clayer.yml](inferencing.cproject.yml), substitute
@@ -37,7 +37,7 @@ The basic compilation command is:
 ```sh
 cbuild inferencing.csolution.yml
 ```
-This command will build for every target and avery configuration available.
+This command will build for every target and every configuration available.
 
 To specify a configuration and target (ie speed for CM55):
 ```sh
@@ -60,7 +60,7 @@ Download missing software packs with cpackget
 ```
 Remove intermediate and output directories
 
-Check the [CMSIS-Toolbox User Guide](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/README.md) for a complete overview of the cbuild command.
+Check the [CMSIS-Toolbox User Guide](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/README.md) for a complete overview of the `cbuild` command.
 
 ### Using CMSIS toolbox extension
 In the CMSIS view, click on the hammer icon.
@@ -73,7 +73,7 @@ docker build -t standalone-csolution .
 
 Copy the content of the deployment for your project in the pack folder.
 
-Build the the firmware with following command:
+Build the firmware with the following command:
 ```
 docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "./build.sh"
 ```
