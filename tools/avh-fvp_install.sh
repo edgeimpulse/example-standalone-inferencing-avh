@@ -5,8 +5,8 @@ cd /
 
 if [ $(uname -m) = "x86_64" ]; then
     wget https://artifacts.tools.arm.com/avh/11.26.11/avh-linux-x86_11.26_11_Linux64.tgz -nv
-    tar -xvf avh-fvp-linux-amd64.tar.gz
-    rm -f avh-fvp-linux-amd64.tar.gz
+    tar -xvf avh-linux-x86_11.26_11_Linux64.tgz
+    rm -f avh-linux-x86_11.26_11_Linux64.tgz
     mkdir /avh-fvp-linux
     ln -s /avh-linux-x86/* /avh-fvp-linux/
     # rm /avh-fvp-11.24.24/avh-linux-x86/bin/models/libpython3.9.so.1.0
