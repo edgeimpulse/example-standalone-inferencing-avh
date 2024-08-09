@@ -14,7 +14,7 @@ You probably need to install the Edge Impulse sdk too:
 cpackget add EdgeImpulse.EI-SDK.x.yy.zzpack
 ```
 
-Then you need to move the `model.clayer.yml` into the App folder.
+Then you need to move the `model.clayer.yml` into the `model` folder.
 
 ## Build the firmware
 
