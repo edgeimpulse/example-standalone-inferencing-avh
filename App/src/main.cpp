@@ -81,7 +81,7 @@ int main(void)
     cycle_counter_stop();
 
     ei_printf("_CYCCNT: %lu\n", post_cycle._CYCCNT);
-    ei_printf("_CPICNT: %lu\n", post_cycle._CYCCNT);
+    ei_printf("_CPICNT: %lu\n", post_cycle._CPICNT);
     ei_printf("_LSUCNT: %lu\n", post_cycle._LSUCNT);
     ei_printf("_FOLDCNT: %lu\n", post_cycle._FOLDCNT);    
 #endif
