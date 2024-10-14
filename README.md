@@ -112,5 +112,5 @@ CM55-U55-128
 CM85
 
 ## Note
-Tested using GCC 10.3.1, GCC 12.3.1, GCC 13.2.1, Arm Compiler v6.19 and 6.22 and Arm LLVM v17.1.
+Tested using GCC 10.3.1, GCC 12.3.1, GCC 13.2.1, GCC 13.3.1, Arm Compiler v6.19 and 6.22 and Arm LLVM v17.1.
 Doesn't work with GCC 12.2.1 for MCU with Helium (Cortex-M55, Cortex-M85).

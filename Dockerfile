@@ -24,8 +24,8 @@ ENV PATH="/LLVMEmbeddedToolchainForArm-17.0.1/bin:${PATH}"
 
 COPY ./tools/armgcc_install.sh /armgcc_install.sh
 RUN chmod +x /armgcc_install.sh && /bin/bash /armgcc_install.sh && rm /armgcc_install.sh
-ENV GCC_TOOLCHAIN_13_2_1="/arm-gnu-toolchain-13.2.Rel1-arm-none-eabi/bin"
-ENV PATH="/arm-gnu-toolchain-13.2.Rel1-arm-none-eabi/bin:${PATH}"
+ENV GCC_TOOLCHAIN_13_2_1="/arm-gnu-toolchain-13.3.rel1-arm-none-eabi/bin"
+ENV PATH="/arm-gnu-toolchain-13.3.rel1-arm-none-eabi/bin:${PATH}"
 
 COPY ./tools/cmsistoolbox_install.sh /cmsistoolbox_install.sh
 RUN chmod +x /cmsistoolbox_install.sh && /bin/bash /cmsistoolbox_install.sh && rm /cmsistoolbox_install.sh
