@@ -4,7 +4,7 @@ set -e
 cd /
 
 if [ $(uname -m) = "x86_64" ]; then
-    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.4.0/cmsis-toolbox-linux-amd64.tar.gz -nv
+    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.6.1/cmsis-toolbox-linux-amd64.tar.gz -nv
     tar -xf cmsis-toolbox-linux-amd64.tar.gz
     rm -f cmsis-toolbox-linux-amd64.tar.gz
     mkdir /cmsis-toolbox-linux
@@ -15,7 +15,7 @@ if [ $(uname -m) = "x86_64" ]; then
     sh cmake-3.29.3-linux-x86_64.sh --prefix=/cmake --skip-license
     ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 else
-    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.4.0/cmsis-toolbox-linux-arm64.tar.gz -nv    
+    wget https://artifacts.tools.arm.com/cmsis-toolbox/2.6.1/cmsis-toolbox-linux-arm64.tar.gz -nv    
     tar -xf cmsis-toolbox-linux-arm64.tar.gz
     rm -f cmsis-toolbox-linux-arm64.tar.gz
     mkdir /cmsis-toolbox-linux

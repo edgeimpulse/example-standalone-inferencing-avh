@@ -67,14 +67,14 @@ Copy the content of the deployment for your project in the pack folder.
 
 Build the firmware with the following command:
 ```sh
-docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "./build.sh"
+docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "./build.sh --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>"
 ```
 
 ### Using script
 You can use the `build.sh` script to compile, target and toolchain can be specified as follow:
 
 ```sh
-./build.sh <TARGET> <TOOLCHAIN>
+./build.sh --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>
 ```
 
 The script will also install any package present in the `pack` folder.

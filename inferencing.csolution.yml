@@ -1,5 +1,5 @@
 solution:
-  created-for: cmsis-toobox@2.4.0
+  created-for: cmsis-toobox@2.6.1
 
   description: Example standalone inferencing project for CMSIS Toolbox
   cdefault:
@@ -115,7 +115,7 @@ solution:
 
     - type: speed
       optimize: speed
-      debug: on
+      debug: off
 
 # List related projects
   projects:

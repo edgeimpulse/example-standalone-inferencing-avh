@@ -3,24 +3,21 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /app
 
-RUN  apt-get update && apt-get install -y wget sudo software-properties-common && rm -rf /var/lib/apt/lists/*
+RUN  apt-get update && apt-get install -y wget sudo software-properties-common build-essential && rm -rf /var/lib/apt/lists/*
 
 ADD ./tools/armclang_install.sh /armclang_install.sh
 RUN chmod +x /armclang_install.sh && /armclang_install.sh
 ENV PATH="/ArmCompilerforEmbedded6.20/bin:${PATH}"
 ENV AC6_TOOLCHAIN_6_20_1="/ArmCompilerforEmbedded6.20/bin:"
 
-COPY ./tools/vela_install.sh /vela_install.sh
-RUN chmod +x /vela_install.sh && /bin/bash /vela_install.sh && rm /vela_install.sh
-
 COPY ./tools/avh-fvp_install.sh /avh-fvp_install.sh
 RUN chmod +x /avh-fvp_install.sh && /bin/bash /avh-fvp_install.sh && rm /avh-fvp_install.sh
 ENV PATH="/avh-fvp-linux/bin:${PATH}"
 
-COPY ./tools/armllvm_install.sh /armllvm_install.sh
-RUN chmod +x /armllvm_install.sh && /armllvm_install.sh && rm /armllvm_install.sh
-ENV CLANG_TOOLCHAIN_17_0_1="/LLVMEmbeddedToolchainForArm-17.0.1/bin"
-ENV PATH="/LLVMEmbeddedToolchainForArm-17.0.1/bin:${PATH}"
+#COPY ./tools/armllvm_install.sh /armllvm_install.sh
+#RUN chmod +x /armllvm_install.sh && /armllvm_install.sh && rm /armllvm_install.sh
+#ENV CLANG_TOOLCHAIN_19_1_1="/LLVMEmbeddedToolchainForArm-19.1.1/bin"
+#ENV PATH="/LLVMEmbeddedToolchainForArm-19.1.1/bin:${PATH}"
 
 COPY ./tools/armgcc_install.sh /armgcc_install.sh
 RUN chmod +x /armgcc_install.sh && /bin/bash /armgcc_install.sh && rm /armgcc_install.sh
