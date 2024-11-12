@@ -1,53 +1,7 @@
 solution:
   created-for: cmsis-toobox@2.6.1
-
   description: Example standalone inferencing project for CMSIS Toolbox
   cdefault:
-
-  misc:
-    - for-compiler: GCC
-      C:
-        - -std=c99
-        - -flax-vector-conversions
-        - -mthumb
-        - -fdata-sections
-      CPP:
-        - -std=c++11
-        - -Og
-        - -fdata-sections
-        - -mthumb
-        - -fno-rtti
-        - -fno-unwind-tables
-      Link:
-        #- --specs=nosys.specs
-        - --specs=nano.specs
-        - --specs=rdimon.specs
-        - --entry=Reset_Handler
-        - -Wl,-Map=.map,--cref,-print-memory-usage,--gc-sections
-    - for-compiler: CLANG
-      C:
-        - -std=c99
-        - -flax-vector-conversions
-        - -mthumb
-        - -fdata-sections
-      CPP:
-        - -std=c++11
-        - -Og
-        - -fdata-sections
-        - -mthumb
-        - -fno-rtti
-        - -fno-unwind-tables
-        - -fno-exceptions
-      Link:
-        - -Wl, -lcrt0
-    - for-compiler: AC6
-      C:
-        - -std=c99
-      CPP:
-        - -std=c++11
-        - -fno-rtti
-      Link:
-        - --entry=Reset_Handler
 
 # List the packs that define the device and/or board
   packs:
@@ -72,14 +26,20 @@ solution:
     #Target: CM4-FP
     - type: CM4-FP
 
-    #Target: CM7
-    - type: CM7
+    #Target: CM7-SP
+    - type: CM7-SP
+
+    #Target: CM7-DP
+    - type: CM7-DP
 
     #Target: CM23
     - type: CM23
 
     #Target: CM33
     - type: CM33
+
+    #Target: CM33-FP
+    - type: CM33-FP
 
     #Target: CM35P
     - type: CM35P
@@ -101,19 +61,19 @@ solution:
       
 # List different build types
   build-types:
-    - type: none
+    - type: Debug
       optimize: none
       debug: on
 
-    - type: balanced
+    - type: Balanced
       optimize: balanced
-      debug: on
+      debug: off
 
-    - type: size
+    - type: Size
       optimize: size
-      debug: on
+      debug: off
 
-    - type: speed
+    - type: Speed
       optimize: speed
       debug: off
 

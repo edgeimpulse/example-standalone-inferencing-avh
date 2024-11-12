@@ -27,9 +27,16 @@ ENV PATH="/arm-gnu-toolchain-13.3.rel1-arm-none-eabi/bin:${PATH}"
 COPY ./tools/cmsistoolbox_install.sh /cmsistoolbox_install.sh
 RUN chmod +x /cmsistoolbox_install.sh && /bin/bash /cmsistoolbox_install.sh && rm /cmsistoolbox_install.sh
 ENV CMSIS_COMPILER_ROOT="/cmsis-toolbox-linux/etc"
+ENV CMSIS_PACK_ROOT=/cmsis-packs
 ENV PATH="/cmsis-toolbox-linux/bin:/ninja/:/cmake/bin/:${PATH}"
 
 RUN cpackget init https://www.keil.com/pack/index.pidx
+
+RUN cpackget update-index
+COPY ./pack/cmsis_packages.cpinstall /cmsis_packages.cpinstall
+RUN cpackget add -a -f /cmsis_packages.cpinstall && rm /cmsis_packages.cpinstall
+RUN cpackget add Keil::V2M-MPS2_CMx_BSP@1.8.2
+RUN cpackget add Keil::V2M-MPS2_IOTKit_BSP@1.5.2
 
 # license handling
 ADD arm_mlops_docker_license* /

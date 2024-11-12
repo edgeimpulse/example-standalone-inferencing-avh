@@ -29,10 +29,15 @@ project:
       for-context:
         - +CM4-FP
 
-    #Target: CM7
-    - layer: ./Target/CM7/Target.clayer.yml
+    #Target: CM7-SP
+    - layer: ./Target/CM7-SP/Target.clayer.yml
       for-context:
-        - +CM7
+        - +CM7-SP
+
+    #Target: CM7-DP
+    - layer: ./Target/CM7-DP/Target.clayer.yml
+      for-context:
+        - +CM7-DP
 
     #Target: CM23
     - layer: ./Target/CM23/Target.clayer.yml
@@ -43,6 +48,11 @@ project:
     - layer: ./Target/CM33/Target.clayer.yml
       for-context:
         - +CM33
+
+    #Target: CM33
+    - layer: ./Target/CM33-FP/Target.clayer.yml
+      for-context:
+        - +CM33-FP
 
     #Target: CM35P
     - layer: ./Target/CM35P/Target.clayer.yml

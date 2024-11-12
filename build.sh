@@ -35,7 +35,7 @@ if [ -z "$TARGET" ]; then
 fi
 
 if [ -z "$BUILD_CONFIG" ]; then
-    BUILD_CONFIG="speed"
+    BUILD_CONFIG="Speed"
 fi
 
 if [ -z "$TOOLCHAIN" ]; then
@@ -68,6 +68,7 @@ else
     echo "Cleaning before building..."
     rm -rf ./build
     rm -rf ./RTE
+    rm -rf ./tmp
     rm -f inferencing.cbuild-idx.yml
     rm -f inferencing.cbuild-pack.yml
     rm -f inferencing.cbuild-set.yml
@@ -80,13 +81,11 @@ else
         FVP_MPS2_Cortex-M0plus -f ${MODEL_CONFIG_TXT} ${BIN}
     elif [ "$TARGET" == "CM3" ]; then
         FVP_MPS2_Cortex-M3 -f ${MODEL_CONFIG_TXT} ${BIN}
-    elif [ "$TARGET" == "CM4" ]; then
+    elif [ "$TARGET" == "CM4" ] || [ "$TARGET" == "CM4-FP" ]; then
         FVP_MPS2_Cortex-M4 -f ${MODEL_CONFIG_TXT} ${BIN}
-    elif [ "$TARGET" == "CM4-FP" ]; then
-        FVP_MPS2_Cortex-M4 -f ${MODEL_CONFIG_TXT} ${BIN}
-    elif [ "$TARGET" == "CM7" ]; then
+    elif [ "$TARGET" == "CM7-SP" ] || [ "$TARGET" == "CM7-DP" ]; then
         FVP_MPS2_Cortex-M7 -f ${MODEL_CONFIG_TXT} ${BIN}
-    elif [ "$TARGET" == "CM33" ]; then
+    elif [ "$TARGET" == "CM33" ] || [ "$TARGET" == "CM33-FP" ]; then
         FVP_MPS2_Cortex-M33 -f ${MODEL_CONFIG_TXT} ${BIN}
     elif [ "$TARGET" == "CM55" ]; then
         FVP_Corstone_SSE-300 -f ${MODEL_CONFIG_TXT} ${BIN}

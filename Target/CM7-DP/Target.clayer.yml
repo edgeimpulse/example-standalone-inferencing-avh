@@ -1,11 +1,11 @@
 layer:
   type: Target
-  description: CM4 target components and files
+  description: CM7 target components and files
 
   packs:
     - pack: Keil::V2M-MPS2_CMx_BSP@1.8.2
 
-  device: CMSDK_CM4_FP_VHT
+  device: CMSDK_CM7_DP_VHT
 
   components:
     # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]

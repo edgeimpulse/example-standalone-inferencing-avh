@@ -3,9 +3,9 @@ layer:
   description: CM23 target components and files
 
   packs:
-    - pack: ARM::Cortex_DFP@1.1.0
+    - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
 
-  device: ARMCM23
+  device: IOTKit_CM23_VHT
 
   processor:
     trustzone: off

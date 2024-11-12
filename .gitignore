@@ -7,6 +7,7 @@
 # keep essential .yml for solution and project settings
 !inferencing.csolution.yml
 !inferencing.cproject.yml
+!cdefault.yml
 !Target.clayer.yml
 !App.clayer.yml
 *.pack
