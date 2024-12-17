@@ -3,11 +3,9 @@ layer:
   description: CM33 target components and files
 
   packs:
-    - pack: ARM::Cortex_DFP@1.1.0  
-  #  - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
+    - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
 
-  #device: IOTKit_CM33_VHT
-  device: ARMCM33
+  device: IOTKit_CM33_FP_VHT
 
   processor:
     trustzone: off

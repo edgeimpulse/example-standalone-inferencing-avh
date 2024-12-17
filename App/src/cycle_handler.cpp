@@ -57,10 +57,14 @@ void cycle_counter_init(void)
 void cycle_counter_start(void)
 {    
     cycle_counter_reset();
-    DWT->CTRL = _VAL2FLD(DWT_CTRL_CYCCNTENA, 1) | _VAL2FLD(DWT_CTRL_CPIEVTENA, 1) |
-                _VAL2FLD(DWT_CTRL_EXCEVTENA, 1) | _VAL2FLD(DWT_CTRL_SLEEPEVTENA, 1) |
-                _VAL2FLD(DWT_CTRL_LSUEVTENA, 1) | _VAL2FLD(DWT_CTRL_FOLDEVTENA, 1) |
-                _VAL2FLD(DWT_CTRL_CYCEVTENA, 1);
+    DWT->CTRL =     _VAL2FLD(DWT_CTRL_CYCCNTENA, 1)     // enables CYCCNT
+                |   _VAL2FLD(DWT_CTRL_CPIEVTENA, 1)     // Enables generation of the CPI counter overflow event:
+                |   _VAL2FLD(DWT_CTRL_EXCEVTENA, 1)     // Enables generation of the exception overhead counter overflow event
+                |   _VAL2FLD(DWT_CTRL_SLEEPEVTENA, 1)   // Enables generation of the Sleep counter overflow event.
+                |   _VAL2FLD(DWT_CTRL_LSUEVTENA, 1)     // Enables generation of the LSU counter overflow event.
+                |   _VAL2FLD(DWT_CTRL_FOLDEVTENA, 1)    // Enables generation of the Folded-instruction counter overflow event:
+//                |   _VAL2FLD(DWT_CTRL_CYCEVTENA, 1      // Enables POSTCNT underflow Event counter packets generation:
+                ;
 }
 
 /**
@@ -112,6 +116,11 @@ int cycle_counter_available(void)
 {
     dwt_ctrl = CM_DWT_CONTROL;
     return ((DWT->CTRL & DWT_CTRL_NOPRFCNT_Msk) << DWT_CTRL_NOPRFCNT_Pos);
+}
+
+void DebugMon_Handler(void)
+{
+    while(1);
 }
 
 #endif
