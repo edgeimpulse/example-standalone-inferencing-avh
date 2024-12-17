@@ -19,6 +19,7 @@
 #include "edge-impulse-sdk/porting/ei_classifier_porting.h"
 #include "systick_handler.h"
 #include "board_init.h"
+#include "features.h"
 
 #include "RTE_Components.h"
 #include CMSIS_device_header
@@ -28,11 +29,6 @@
 #endif
 
 extern uint32_t SystemCoreClock;
-
-static const float features[] = { 
-        // copy raw features here (for example from the 'Live classification' page)
-
-};
 
 int raw_feature_get_data(size_t offset, size_t length, float *out_ptr)
 {
@@ -53,9 +49,9 @@ int main(void)
     ei_printf("Edge Impulse standalone inferencing (AVH)\n");
     ei_printf("SystemCoreClock: %ld\n", SystemCoreClock);
 
-    if (sizeof(features) / sizeof(float) != EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE) {
+    if (FEATURES_SIZE!= EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE) {
         ei_printf("The size of your 'features' array is not correct. Expected %d items, but had %u\n",
-                EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE, sizeof(features) / sizeof(float));
+                EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE, FEATURES_SIZE);
         return 1;
     }
         
