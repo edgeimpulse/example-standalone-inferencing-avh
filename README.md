@@ -14,7 +14,15 @@ You probably need to install the Edge Impulse sdk too:
 cpackget add EdgeImpulse.EI-SDK.x.yy.zzpack
 ```
 
-Then you need to move the `model.clayer.yml` into the `model` folder.
+Then you need to copy the `model.clayer.yml` into the `model` folder.
+
+To test a sample, from you project copy the raw feature you want to test from the processing block and paste it in `feature.h`
+```
+const float features[] = { 
+        // copy raw features here (for example from the 'Live classification' page)
+
+}; 
+```
 
 ## Build the firmware
 
