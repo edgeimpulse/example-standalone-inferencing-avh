@@ -23,7 +23,7 @@ run_avh () {
     elif [ "$TARGET" == "CM33" ] || [ "$TARGET" == "CM33-FP" ]; then
         FVP_MPS2_Cortex-M33 -f ${MODEL_CONFIG_TXT} ${BIN}
     elif [ "$TARGET" == "CM55" ]; then
-        FVP_Corstone_SSE-300 -f ${MODEL_CONFIG_TXT} ${BIN}
+        FVP_MPS2_Cortex -f ${MODEL_CONFIG_TXT} ${BIN}
     elif [ "$TARGET" == "CM55-U55-128" ]; then
         FVP_Corstone_SSE-300_Ethos-U55 -f ${MODEL_CONFIG_TXT} ${BIN}
     elif [ "$TARGET" == "CM55-U55-256" ]; then

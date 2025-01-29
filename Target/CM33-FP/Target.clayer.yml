@@ -2,11 +2,6 @@ layer:
   type: Target
   description: CM33 target components and files
 
-  packs:
-    - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
-
-  device: IOTKit_CM33_FP_VHT
-
   processor:
     trustzone: off
 

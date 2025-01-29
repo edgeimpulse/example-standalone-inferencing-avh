@@ -2,11 +2,6 @@ layer:
   type: Target
   description: CM3 target components and files
 
-  packs:
-    - pack: Keil::V2M-MPS2_CMx_BSP@1.8.2
-
-  device: CMSDK_CM3_VHT
-
   components:
     # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]
     - component: ARM::CMSIS:CORE

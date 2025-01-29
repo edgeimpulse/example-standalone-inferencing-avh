@@ -1,64 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/tools/projmgr/2.7.0/tools/projmgr/schemas/csolution.schema.json
 solution:
   created-for: cmsis-toobox@2.7.0
   description: Example standalone inferencing project for CMSIS Toolbox
   cdefault:
+
+  # List of tested compilers that can be selected.
+  select-compiler:
+    - compiler: AC6
+    - compiler: GCC
+
+  compiler: GCC
 
 # List the packs that define the device and/or board
   packs:
     - pack: ARM::CMSIS@6.0.0
     - pack: ARM::CMSIS-DSP@1.15.0
     - pack: ARM::CMSIS-NN@4.0.0
+    - pack: Keil::V2M-MPS2_CMx_BSP@1.8.2
+    - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
+    - pack: ARM::Cortex_DFP@1.1.0
+    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.5.0
+  #  - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
 
 # List different hardware targets that are used to deploy the solution
   target-types:
     #Target: CM0
     - type: CM0
-
+      device: CMSDK_CM0_VHT
+      
     #Target: CM0plus
     - type: CM0plus
+      device: CMSDK_CM0plus_VHT
 
     #Target: CM3
     - type: CM3
+      device: CMSDK_CM3_VHT
 
     #Target: CM4
     - type: CM4
+      device: CMSDK_CM4_VHT
 
     #Target: CM4-FP
     - type: CM4-FP
+      device: CMSDK_CM4_FP_VHT
 
     #Target: CM7-SP
     - type: CM7-SP
+      device: CMSDK_CM7_SP_VHT
 
     #Target: CM7-DP
     - type: CM7-DP
+      device: CMSDK_CM7_DP_VHT
 
     #Target: CM23
     - type: CM23
+      device: IOTKit_CM23_VHT
 
     #Target: CM33
     - type: CM33
+      device: ARMCM33
+      #device: IOTKit_CM33_VHT
 
     #Target: CM33-FP
     - type: CM33-FP
+      device: IOTKit_CM33_FP_VHT
 
     #Target: CM35P
     - type: CM35P
+      device: ARMCM35P
 
     #Target: CM52
     - type: CM52
+      device: ARMCM52
 
     #Target: CM55
     - type: CM55
+      device: ARMCM55
 
     #Target: CM55-U55-128
     - type: CM55-U55-128
+      device: ARM::SSE-300-MPS3
 
     #Target: CM55-U55-256
     - type: CM55-U55-256
+      device: ARM::SSE-300-MPS3
 
     #Target: CM85
     - type: CM85
-      
+      device: ARMCM85
+
 # List different build types
   build-types:
     - type: Debug
