@@ -70,7 +70,7 @@ Build the firmware with the following command:
 docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "./build.sh --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>"
 ```
 
-### Using script
+### Using the build script
 You can use the `build.sh` script to compile, target and toolchain can be specified as follow:
 
 ```sh
@@ -83,10 +83,12 @@ The script will also install any package present in the `pack` folder.
 > After building, the bin will be run locally on AVH.
 
 ## Run on AVH
+
 The basic usage is:
 ```sh
 <AVH FVP for the target> -f <fvp config file> <elf file to be loaded>
 ```
+
 Some examples:
 - Run Test on model for Cortex-M3 (speed) compiled with GCC
 ```sh
@@ -95,6 +97,14 @@ FVP_MPS2_Cortex-M3 -f ./Target/CM3/model_config.txt ./build/CM3/GCC/speed/outdir
 - Run Test on model for Cortex-M55 with Ethos (none) compiled with Arm Compiler
 ```sh
 FVP_Corstone_SSE-300_Ethos-U55 -f ./Target/CM55/model_config.txt ./build/CM55/AC6/speed/outdir/CM55_inferencing.elf
+```
+
+### Using the build script
+You can also use `--run` when invoncing `build.sh` if you want to run an already built target.
+
+For example:
+```sh
+build.sh --run --target CM7 --toolchain AC6
 ```
 
 ## Available target
