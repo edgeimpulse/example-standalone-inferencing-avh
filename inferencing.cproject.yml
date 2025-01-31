@@ -85,6 +85,14 @@ project:
       for-context:
         - +CM85
 
+    - layer: ./Target/Corstone-315/Target.clayer.yml
+      for-context:
+        - +Corstone-315
+
+    - layer: ./Target/Corstone-320/Target.clayer.yml
+      for-context:
+        - +Corstone-320
+
   output:
     base-name: $TargetType$_$Project$ # used the base name of the `cproject.yml` file.
     type: elf # Generate executeable file.

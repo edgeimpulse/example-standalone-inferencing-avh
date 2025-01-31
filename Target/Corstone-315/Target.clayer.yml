@@ -1,0 +1,33 @@
+layer:
+  type: Target
+  description: Corstone-320 target components and files
+
+  processor:
+    trustzone: off
+
+  define:
+    - ETHOSU65
+    - EI_ETHOS
+    - EI_ALIF_ADDR_TRANSLATION
+    - ARM_NPU
+    - ETHOSU_ARCH: u65
+
+  components:
+    # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]
+    - component: ARM::CMSIS:CORE
+    - component: Device:Startup&C Startup
+
+  groups:
+    - group: FVP
+      files:
+        - file: ./model_config.txt
+
+  linker:
+    - for-compiler: AC6
+      regions: RTE/Device/SSE_315_FVP/regions_SSE_315_FVPP.h
+    - for-compiler: GCC
+      regions: RTE/Device/SSE_315_FVP/regions_SSE_315_FVPP.h
+    - for-compiler: CLANG
+      regions: RTE/Device/SSE_315_FVP/regions_SSE_315_FVPP.h
+    - for-compiler: IAR
+      regions: RTE/Device/SSE_315_FVP/regions_SSE_315_FVPP.h

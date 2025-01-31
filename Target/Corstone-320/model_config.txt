@@ -1,0 +1,9 @@
+# Parameters:
+# instance.parameter=value       #(type, mode) default = 'def value' : description : [min..max]
+#----------------------------------------------------------------------------------------------
+#mps4_board.subsystem.cpu0.semihosting-enable=0  
+mps4_board.telnetterminal0.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
+vis_hdlcd.disable_visualisation=1                          # (bool  , init-time) default = '0'      : Enable semihosting SVC traps. Applications that do not use semihosting must set this parameter to false.                                          # (int   , init-time) default = '0x1'    : Set whether the model has MVE support. If FPU = 0: 0=MVE not included, 1=Integer subset of MVE included. If FPU = 1: 0=MVE not included, 1=Integer subset of MVE included, 2=Integer and half and single precision floating point MVE included
+mps4_board.DISABLE_GATING=1
+mps4_board.visualisation.disable-visualisation=1
+#----------------------------------------------------------------------------------------------

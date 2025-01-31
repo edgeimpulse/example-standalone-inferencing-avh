@@ -39,6 +39,10 @@ run_avh () {
     elif [ "$TARGET" == "CM85-U65" ]; then
         echo "Ethos-U65 not supported yet"
         #FVP_Corstone_SSE-310_Ethos-U65 -f ./Target/CM85/model_config.txt ./build/CM85/GCC/${BUILD_CONFIG}/inferencing/outdir/CM85_inferencing.elf
+    elif [ "$TARGET" == "Corstone-315" ]; then
+        FVP_Corstone_SSE-315 -f ${MODEL_CONFIG_TXT} ${BIN}
+    elif [ "$TARGET" == "Corstone-320" ]; then
+        FVP_Corstone_SSE-320 -f ${MODEL_CONFIG_TXT} ${BIN}
     else
         echo "No AVH available for ${TARGET}"
         exit 1

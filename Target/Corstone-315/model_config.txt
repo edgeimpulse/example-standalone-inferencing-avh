@@ -1,0 +1,7 @@
+# Parameters:
+# instance.parameter=value       #(type, mode) default = 'def value' : description : [min..max]
+#----------------------------------------------------------------------------------------------
+mps4_board.visualisation.disable-visualisation=1
+mps4_board.telnetterminal0.start_telnet=0             # (bool  , init-time) default = '1'      : Start telnet if nothing connected
+mps4_board.subsystem.cpu0.semihosting-enable=0
+#----------------------------------------------------------------------------------------------

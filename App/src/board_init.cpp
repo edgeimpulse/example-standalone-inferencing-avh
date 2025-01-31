@@ -59,7 +59,16 @@ static void arm_ethosu_npu_irq_handler(void)
 /** @brief  Initialises the NPU IRQ */
 static void arm_ethosu_npu_irq_init(void)
 {
+#if defined (ETHOSU55)
     const IRQn_Type ethosu_irqnum = (IRQn_Type)ETHOS_U55_IRQn;
+#elif defined (ETHOSU65)
+    const IRQn_Type ethosu_irqnum = (IRQn_Type)NPU0_IRQn;
+#elif defined (ETHOSU85)
+    const IRQn_Type ethosu_irqnum = (IRQn_Type)NPU0_IRQn;
+#else
+#error "Unsupported Ethos-U NPU"
+#endif
+
 
     /* Register the EthosU IRQ handler in our vector table.
      * Note, this handler comes from the EthosU driver */
@@ -78,8 +87,19 @@ static int arm_ethosu_npu_init(void)
     arm_ethosu_npu_irq_init();
 
     /* Initialise Ethos-U device */
+#if defined (ETHOSU55)
     void* const ethosu_base_address = reinterpret_cast<void*>(ETHOS_U55_APB_BASE_S);
     ei_printf("ETHOS_U55_APB_BASE_S %d\n", ETHOS_U55_APB_BASE_S);
+#elif defined (ETHOSU65)
+    void* const ethosu_base_address = reinterpret_cast<void*>(NPU0_APB_BASE_S);
+    ei_printf("ETHOS_U55_APB_BASE_S %d\n", NPU0_APB_BASE_S);
+#elif defined (ETHOSU85)
+    void* const ethosu_base_address = reinterpret_cast<void*>(NPU0_APB_BASE_S);
+    ei_printf("ETHOS_U55_APB_BASE_S %d\n", NPU0_APB_BASE_S);
+#else
+#error "Unsupported Ethos-U NPU"
+#endif
+
     ei_printf("get_cache_arena_size %d\n", get_cache_arena_size());
 
     if (0 != (err = ethosu_init(&npuDriver,         /* Ethos-U driver device pointer */

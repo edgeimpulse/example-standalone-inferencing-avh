@@ -20,6 +20,8 @@ solution:
     - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
     - pack: ARM::Cortex_DFP@1.1.0
     - pack: ARM::V2M_MPS3_SSE_300_BSP@1.5.0
+    - pack: ARM::SSE_320_BSP@1.0.0
+    - pack: ARM::SSE_315_BSP@1.0.0
   #  - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
 
 # List different hardware targets that are used to deploy the solution
@@ -88,6 +90,12 @@ solution:
     #Target: CM85
     - type: CM85
       device: ARMCM85
+
+    - type: Corstone-315
+      device: ARM::SSE-315-FVP
+
+    - type: Corstone-320
+      device: ARM::SSE-320-FVP
 
 # List different build types
   build-types:
