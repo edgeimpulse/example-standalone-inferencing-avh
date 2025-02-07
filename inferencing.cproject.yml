@@ -3,7 +3,7 @@ project:
 
   layers:
     - layer: ./App/App.clayer.yml
-    - layer: ./model/model.clayer.yml
+    - layer: ./model/edgeimpulse.clayer.yml
 
    #Target: CM0
     - layer: ./Target/CM0/Target.clayer.yml
