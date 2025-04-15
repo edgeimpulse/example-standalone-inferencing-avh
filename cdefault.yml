@@ -18,6 +18,7 @@ default:
         - --specs=nano.specs
         - --specs=rdimon.specs
         - --entry=Reset_Handler
+        - -Wl,--no-warn-rwx-segments   # suppress incorrect linker warning
         - -Wl,-Map=.map,--cref,-print-memory-usage,--gc-sections
     - for-compiler: CLANG
       C:
