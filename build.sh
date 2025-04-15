@@ -74,6 +74,10 @@ while [[ $# -gt 0 ]]; do
             CLEAN=1
             shift # past argument
             ;;
+        --install)
+            INSTALL=1
+            shift # past argument
+            ;;
         *)
             POSITIONAL_ARGS+=("$1") # save positional arg
             shift # past argument
@@ -94,10 +98,14 @@ if [ -z "$TOOLCHAIN" ]; then
     TOOLCHAIN="GCC"
 fi
 
-for pack in $(ls ./pack/*.pack); do
-    echo "Installing pack: ${pack}"
-    cpackget add ${pack} -a
-done
+if [ "$INSTALL" == 1 ]; then
+    cpackget update-index
+
+    for pack in $(ls ./pack/*.pack); do
+        echo "Installing pack: ${pack}"
+        cpackget add ${pack} -a
+    done
+fi
 
 if [ "$TOOLCHAIN" == "GCC" ] || [ "$TOOLCHAIN" == "CLANG" ]; then
 BIN=./build/${TARGET}/${TOOLCHAIN}/${BUILD_CONFIG}/inferencing/outdir/${TARGET}_inferencing.elf
@@ -109,8 +117,6 @@ else
 fi
 
 MODEL_CONFIG_TXT=./Target/${TARGET}/model_config.txt
-
-cpackget update-index
 
 if [ "$CLEAN" == 1 ]; then
     echo "Cleaning build"
