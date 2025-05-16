@@ -12,7 +12,8 @@
 !App.clayer.yml
 *.pack
 
-RTE/
+*.base@*
+
 out/
 tmp/
 build/

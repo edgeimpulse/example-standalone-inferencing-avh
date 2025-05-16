@@ -1,3 +1,6 @@
 {
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "clangd.arguments": [
+        "--compile-commands-dir=/Users/francescovarani/work/edge_impulse/arm/example-standalone-inferencing-avh/out/inferencing/CM4-FP/Speed"
+    ]
 }

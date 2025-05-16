@@ -10,6 +10,8 @@ run_avh () {
         exit 1
     fi
 
+    echo "Running firmware for ${TARGET}"
+
     if [ "$TARGET" == "CM0" ]; then
         FVP_MPS2_Cortex-M0 -f ${MODEL_CONFIG_TXT} ${BIN}
     elif [ "$TARGET" == "CM0plus" ]; then
@@ -70,6 +72,10 @@ while [[ $# -gt 0 ]]; do
             RUN=1
             shift # past value
             ;;
+        --build_run)
+            BUILD_RUN=1
+            shift # past value
+            ;;
         --clean)
             CLEAN=1
             shift # past argument
@@ -105,6 +111,8 @@ if [ "$INSTALL" == 1 ]; then
         echo "Installing pack: ${pack}"
         cpackget add ${pack} -a
     done
+
+    cbuild ./inferencing.csolution.yml --packs --update-rte
 fi
 
 if [ "$TOOLCHAIN" == "GCC" ] || [ "$TOOLCHAIN" == "CLANG" ]; then
@@ -123,9 +131,7 @@ if [ "$CLEAN" == 1 ]; then
     rm -rf ./build
     rm -rf ./RTE
     rm -rf ./tmp
-    rm -f inference.cbuild-idx.yml
-    rm -f inference.cbuild-pack.yml
-    rm -f inference.cbuild-set.yml
+    rm -f *.cbuild-*.yml    
     exit 0
 elif [ "$RUN" == 1 ]; then
     run_avh
@@ -134,6 +140,8 @@ else
     echo "Cleaning before building..."
     echo "Building firmware for ${TARGET} using ${TOOLCHAIN} toolchain"
     cbuild ./inferencing.csolution.yml --context-set --update-rte --packs --context inferencing.${BUILD_CONFIG}+${TARGET} --toolchain ${TOOLCHAIN}
-    run_avh
+    if [ "$BUILD_RUN" == 1 ]; then        
+        run_avh
+    fi    
     exit 0
 fi

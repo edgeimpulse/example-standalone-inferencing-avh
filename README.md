@@ -1,5 +1,5 @@
 # Edge Impulse Example: stand-alone inferencing for CMSIS toolbox
-Example standalone inferencing for AVH created for CMSIS toolbox v2.4.0
+Example standalone inferencing for AVH created for CMSIS toolbox v2.7.0
 
 ## Update the model to test
 Once you have deployed your model as a Open CMSIS pack, unzip the downloaded file, you will find 2 pack files and a `model.clayer.yml`
@@ -73,16 +73,37 @@ docker build -t standalone-csolution .
 
 Copy the content of the deployment for your project in the pack folder.
 
+#### Build
 Build the firmware with the following command:
 ```sh
 docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "./build.sh --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>"
 ```
 
+#### Run
+Build the firmware with the following command:
+```sh
+docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "./build.sh --run --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>"
+```
+
+#### Build & Run
+Build & run the firmware with the following command:
+```sh
+docker run --rm -it -v "${PWD}":/app standalone-csolution /bin/bash -c "./build.sh --build_run --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>"
+```
+
 ### Using the build script
-You can use the `build.sh` script to compile, target and toolchain can be specified as follow:
+You can use the `build.sh` script to compile, run or both; the target, the build config and the toolchain can be specified as follow:
 
 ```sh
 ./build.sh --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>
+```
+
+```sh
+./build.sh --run --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>
+```
+
+```sh
+./build.sh --build_run --target <TARGET> --config <BUILD_CONFIG> --toolchain <TOOLCHAIN>
 ```
 
 The script will also install any package present in the `pack` folder.
