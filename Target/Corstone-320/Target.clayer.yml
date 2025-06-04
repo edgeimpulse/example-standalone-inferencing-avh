@@ -12,11 +12,6 @@ layer:
     - ARM_NPU
     - ETHOSU_ARCH: u85
 
-  components:
-    # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]
-    - component: ARM::CMSIS:CORE
-    - component: Device:Startup&C Startup
-
   groups:
     - group: FVP
       files:
@@ -24,10 +19,10 @@ layer:
 
   linker:
     - for-compiler: AC6
-      regions: RTE/Device/SSE_320_FVP/regions_SSE_320_FVP.h
+      regions: $SolutionDir()$/RTE/Device/SSE_320_FVP/regions_SSE_320_FVP.h
     - for-compiler: GCC
-      regions: RTE/Device/SSE_320_FVP/regions_SSE_320_FVP.h
+      regions: $SolutionDir()$/RTE/Device/SSE_320_FVP/regions_SSE_320_FVP.h
     - for-compiler: CLANG
-      regions: RTE/Device/SSE_320_FVP/regions_SSE_320_FVP.h
+      regions: $SolutionDir()$/RTE/Device/SSE_320_FVP/regions_SSE_320_FVP.h
     - for-compiler: IAR
-      regions: RTE/Device/SSE_320_FVP/regions_SSE_320_FVP.h
+      regions: $SolutionDir()$/RTE/Device/SSE_320_FVP/regions_SSE_320_FVP.h

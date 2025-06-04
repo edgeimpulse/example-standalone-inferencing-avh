@@ -3,10 +3,6 @@ layer:
   type: Application
   description: Example standalone inferencing project for CMSIS Toolbox using Edge Impulse SDK
 
-  components:  
-    - component: ARM::CMSIS:DSP
-    - component: ARM::CMSIS:NN Lib
-
   groups:
     - group: Application
       files:

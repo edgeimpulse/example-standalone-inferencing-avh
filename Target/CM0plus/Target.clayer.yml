@@ -2,11 +2,6 @@ layer:
   type: Target
   description: CM0+ target components and files
 
-  components:
-    # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]
-    - component: ARM::CMSIS:CORE
-    - component: Device:Startup&C Startup
-
   groups:
     - group: FVP
       files:
@@ -14,10 +9,10 @@ layer:
 
   linker:
     - for-compiler: AC6
-      regions: RTE/Device/$Dname$/regions_$Dname$.h
+      regions: $SolutionDir()$/RTE/Device/$Dname$/regions_$Dname$.h
     - for-compiler: GCC
-      regions: RTE/Device/$Dname$/regions_$Dname$.h
+      regions: $SolutionDir()$/RTE/Device/$Dname$/regions_$Dname$.h
     - for-compiler: CLANG
-      regions: RTE/Device/$Dname$/regions_$Dname$.h
+      regions: $SolutionDir()$/RTE/Device/$Dname$/regions_$Dname$.h
     - for-compiler: IAR
-      regions: RTE/Device/$Dname$/regions_$Dname$.h
+      regions: $SolutionDir()$/RTE/Device/$Dname$/regions_$Dname$.h

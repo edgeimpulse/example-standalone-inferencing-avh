@@ -11,19 +11,6 @@ solution:
 
   compiler: GCC
 
-# List the packs that define the device and/or board
-  packs:
-    - pack: ARM::CMSIS@6.0.0
-    - pack: ARM::CMSIS-DSP@1.15.0
-    - pack: ARM::CMSIS-NN@4.0.0
-    - pack: Keil::V2M-MPS2_CMx_BSP@1.8.2
-    - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
-    - pack: ARM::Cortex_DFP@1.1.0
-    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.5.0
-    - pack: ARM::SSE_320_BSP@1.0.0
-    - pack: ARM::SSE_315_BSP@1.0.0
-  #  - pack: Keil::V2M-MPS2_IOTKit_BSP@1.5.2
-
 # List different hardware targets that are used to deploy the solution
   target-types:
     #Target: CM0
